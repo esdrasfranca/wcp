@@ -8,7 +8,7 @@ $config = array();
 if (ENVIRONMENT == 'development') {
 
     $url = array(
-        "cont" => 'http://' . $_SERVER['HTTP_HOST'] . ':8080/wcp',
+        "cont" => 'http://' . $_SERVER['HTTP_HOST'] . '/wcp',
         "cas" => 'http://' . $_SERVER['HTTP_HOST'] . '/wcp',
     );
 
@@ -16,9 +16,9 @@ if (ENVIRONMENT == 'development') {
     $config['dbname'] = 'lojavirtual';
     $config['host'] = 'localhost';
     $config['user'] = 'root';
-    $config['passw'] = '';
+    $config['passw'] = 'admin';
     $config['root_dir'] = $_SERVER['DOCUMENT_ROOT'] . 'wcp';
-    $config['url'] = $url['cas'];
+    $config['url'] = $url['cont'];
 } else {
     $config['dbname'] = 'lojavirtual';
     $config['host'] = 'localhost';
