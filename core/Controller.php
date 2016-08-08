@@ -27,7 +27,6 @@ abstract class Controller {
     }
 
     public function loadTemplate($viewName, $viewData = array()) {
-        $menu = $this->dao->selectAll('categorias');
         include 'views/template/template.php';
     }
 

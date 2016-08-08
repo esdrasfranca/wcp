@@ -38,6 +38,9 @@ a{
     background: #3498db;
     float: left;
 }
+.logo a{
+    color: #fff;
+}
 
 .menu-bar{
     /*background: red;*/
@@ -56,6 +59,7 @@ a{
     background-color: #222d32;
     float: left;
     min-height: 800px;
+    z-index: 2;
 }
 .sidebar{
     box-sizing: border-box;
@@ -70,6 +74,7 @@ a{
     background-color: #ecf0f1;
     min-height: 800px;
     padding: 0 0 0 245px; 
+    z-index: 1;
 }
 
 /*FOOTER*/
