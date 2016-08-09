@@ -23,6 +23,7 @@
                     <td><?php echo $value['user_name']; ?></td>
                     <td><?php echo $value['user_email']; ?></td>
                     <td><a href="<?php echo $settings['url'];?>/usuario/excluir/<?php echo $value['user_id'];?>">Excluir</a></td>
+                    <td><a href="<?php echo $settings['url'];?>/usuario/editar/<?php echo $value['user_id'];?>">Editar</a></td>
                 </tr>
             <?php endforeach; ?>
         <?php else : ?>

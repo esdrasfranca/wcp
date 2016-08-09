@@ -14,25 +14,20 @@
 class usuarioController extends Controller {
 
     private $usuarioModel;
+    private $usuarios;
 
     public function __construct() {
         parent::__construct();
         $this->usuarioModel = new Users();
+        $this->usuarios = array();
     }
 
     public function index() {
-        $data = array();
-
         if (isset($_POST['enviar'])) {
             $this->novoUsuario();
         }
-
-        $u = $this->usuarioModel->selectAllUsers();
-        if ($u) {
-            $data['usuarios'] = $u;
-        }
-
-        $this->loadTemplate('usuarios', $data);
+        $this->usuarios['usuarios'] = $this->usuarioModel->selectAllUsers();
+        $this->loadTemplate('usuarios', $this->usuarios);
     }
 
     public function novo() {
@@ -81,13 +76,20 @@ class usuarioController extends Controller {
             if ($result) {
                 $data['msg']['type'] = 'success';
                 $data['msg'][] = 'Usuário excluido com sucesso.';
-                //$this->loadTemplate('usuarios', $data);
                 header('Location: ' . $settings['url'] . '/usuario');
             } else {
                 $data['msg']['type'] = 'erro';
                 $data['msg'][] = 'Falha ao tentar cadastrar o novo usuário';
                 $this->loadTemplate('usuarios', $data);
             }
+        }
+    }
+
+    public function editar($id) {
+        if (!empty($id) && is_numeric($id)) {
+            $id = addslashes($id);
+            $data['usuario'] = $this->usuarioModel->selectUser($id);
+            $this->loadTemplate('editar', $data);
         }
     }
 

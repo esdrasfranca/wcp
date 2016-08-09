@@ -95,7 +95,7 @@ class PrepareSQL {
         }
 
         $table = addslashes($table);
-        $sql = 'SELECT';
+        $sql = 'SELECT ';
 
         $dados = array();
         if (count($columns) > 0) {

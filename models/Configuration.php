@@ -15,23 +15,24 @@ class Configuration extends Model {
 
     const TABLE_NAME = 'settings';
 
-    private $prepareSql;
-
     public function __construct() {
-        parent::__construct();
-        $this->prepareSql = new PrepareSQL();
+        parent::__construct(Configuration::TABLE_NAME);
     }
 
     public function selectAllConfigurations() {
-        return $this->dao->selectAll(Configuration::TABLE_NAME);
+        return $this->selectAll();
     }
 
+    /**
+     * 
+     * @param array $data
+     * @return int Retorna -1 caso o array $data esteja vazio.
+     */
     public function insertConfigurations($data = array()) {
         if (is_array($data) && count($data) > 0) {
-            $sql = $this->prepareSql->insert(Configuration::TABLE_NAME, $data);
-            return $this->dao->insert($sql);
+            return $this->insert($data);
         } else {
-            return 0;
+            return -1;
         }
     }
 
