@@ -1,1 +1,4 @@
 .clear{clear: both;}
+.msg{padding: 10px; border-radius: 5px;}
+.msg-success{background: #39d239;}
+.msg-danger{background: #fd7777; border: 1px solid #ce0202; color: #fff;}

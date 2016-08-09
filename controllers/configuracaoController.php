@@ -24,7 +24,7 @@ class configuracaoController extends Controller {
         if (isset($_POST['enviar'])) {
             $this->configuration();
         }
-        $this->loadTemplate('settings', array());
+        $this->loadTemplate('config', array());
     }
 
     private function configuration() {
@@ -42,15 +42,21 @@ class configuracaoController extends Controller {
         }
         $url = implode('', $array_url);
 
-        $this->configurations->insertConfigurations(array(
-            'url' => $url,
+        $result = $this->configurations->insertConfigurations(array(
+            'url_site' => $url,
             'db_host' => $host,
             'db_passw' => $dbpassw,
             'db_user' => $dbuser,
             'db_drive' => $dbdrive,
             'db_name' => $dbName
         ));
-        $this->loadTemplate('home', array());
+
+        if ($result > 0) {
+            header('Location: /wcp/home');
+            die();
+        } else {
+            $this->loadTemplate('config', array());
+        }
     }
 
 }

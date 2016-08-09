@@ -14,9 +14,11 @@
 class DAO {
 
     private $connection;
+    public $prepare_sql;
 
     public function __construct() {
         $this->connection = Connection::getInstance();
+        $this->prepare_sql = new PrepareSQL();
     }
 
     /**
@@ -70,7 +72,8 @@ class DAO {
     public function insert($sql) {
         if (!empty($sql)) {
             try {
-                if ($this->connection->exec($sql)) {
+                $result = $this->connection->exec($sql);
+                if ($result > 0) {
                     return $this->connection->lastInsertId();
                 } else {
                     return FALSE;
@@ -83,6 +86,20 @@ class DAO {
     }
 
     public function update($sql) {
+        if (!empty($sql)) {
+            try {
+                if ($this->connection->exec($sql)) {
+                    return TRUE;
+                } else {
+                    return FALSE;
+                }
+            } catch (PDOException $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
+    }
+
+    public function delete($sql) {
         if (!empty($sql)) {
             try {
                 if ($this->connection->exec($sql)) {

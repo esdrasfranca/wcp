@@ -1,5 +1,5 @@
 <?php
-global $config;
-var_dump($config);
+global $settings;
+var_dump($settings);
 
 echo 'home';

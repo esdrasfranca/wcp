@@ -12,7 +12,7 @@
  * @author Esdras
  */
 class PrepareSQL {
-   
+
     /**
      * Prepara a instrução SQL UPDATE
      * @param string $table Nome da tabela.
@@ -95,7 +95,7 @@ class PrepareSQL {
         }
 
         $table = addslashes($table);
-        $sql = 'SELECT ';
+        $sql = 'SELECT';
 
         $dados = array();
         if (count($columns) > 0) {

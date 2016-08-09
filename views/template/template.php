@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-global $config;
+global $settings;
 ?>
 
 <!--
@@ -13,15 +13,15 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>WCP - Work Control Panel</title>
-        <link rel="stylesheet" href="<?php echo $config['url']; ?>/assets/css/oocss.css"/>
-        <link rel="stylesheet" href="<?php echo $config['url']; ?>/assets/css/template.css"/>
+        <link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/css/oocss.css"/>
+        <link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/css/template.css"/>
     </head>
     <body>
         <div class="container">
 
             <header class="main-header">
                 <section class="logo">
-                    <a href="<?php echo $config['url'];?>/home"><h1>WCP</h1></a>
+                    <a href="<?php echo $settings['url'];?>/home"><h1>WCP</h1></a>
                 </section><!--logo-->
                 <nav class="menu-bar"></nav><!--menu-bar-->
             </header><!--main-header-->

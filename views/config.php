@@ -26,7 +26,7 @@ configurações
         </tr>
         <tr>
             <td><label for="dbpassw">Senha do banco de dados</label></td>
-            <td><input type="password" placeholder="" name="dbpassw" required="true"/></td>
+            <td><input type="password" placeholder="" name="dbpassw"/></td>
         </tr>
         <tr>
             <td></td>

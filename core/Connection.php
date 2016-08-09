@@ -1,7 +1,6 @@
 <?php
 
-require_once './config.php';
-
+require 'settings.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,10 +18,10 @@ class Connection {
 
     public static function getInstance() {
         if (self::$conn == NULL) {
-            global $config;
-            $dsn = $config['driver'] . ":host=" . $config['host'] . ";dbname=" . $config['dbname'];
+            global $settings;
+            $dsn = $settings['driver'] . ":host=" . $settings['host'] . ";dbname=" . $settings['dbname'];
             try {
-                self::$conn = new PDO($dsn, $config['user'], $config['passw']);
+                self::$conn = new PDO($dsn, $settings['user'], $settings['passw']);
             } catch (PDOException $exc) {
                 echo $exc->getTraceAsString();
                 throw new PDOException("Falha ao criar a conexão com BD. " . $exc);

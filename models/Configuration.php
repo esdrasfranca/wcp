@@ -13,7 +13,7 @@
  */
 class Configuration extends Model {
 
-    const TABLE_NAME = 'config';
+    const TABLE_NAME = 'settings';
 
     private $prepareSql;
 
@@ -27,12 +27,12 @@ class Configuration extends Model {
     }
 
     public function insertConfigurations($data = array()) {
-
         if (is_array($data) && count($data) > 0) {
             $sql = $this->prepareSql->insert(Configuration::TABLE_NAME, $data);
             return $this->dao->insert($sql);
+        } else {
+            return 0;
         }
-        exit($sql);
     }
 
 }

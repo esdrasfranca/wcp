@@ -65,7 +65,6 @@ a{
     box-sizing: border-box;
     color: #fff;
 }
-
 /*CONTENT*/
 .main-content{
     position: relative;
@@ -86,4 +85,10 @@ a{
     height: 50px; 
     background-color: #fff;
     padding-left: 245px; 
+}
+
+/*ESTILO*/
+
+.sidebar a{
+    color: #fff;
 }

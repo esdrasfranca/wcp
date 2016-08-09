@@ -41,7 +41,7 @@ class Core {
             $currenceController = "homeController";
             $currenceAction = "index";
         }
-        
+
         $controller = new $currenceController(); //Instancia o controller
         call_user_func_array(array($controller, $currenceAction), $params);
     }
