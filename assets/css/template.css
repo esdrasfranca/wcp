@@ -69,10 +69,9 @@ a{
 .main-content{
     position: relative;
     z-index: -1;
-    width: 100%;
     background-color: #ecf0f1;
     min-height: 800px;
-    padding: 0 0 0 245px; 
+    padding: 0 15px 0 245px; 
     z-index: 1;
 }
 
