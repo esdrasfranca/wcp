@@ -31,4 +31,8 @@ class Users extends Model {
         return $this->select(array(), array('user_email' => $email));
     }
 
+    public function updateUser($data, $where, $cond) {
+        return $this->update($data, $where, $cond);
+    }
+
 }

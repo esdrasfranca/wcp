@@ -22,12 +22,19 @@ class usuarioController extends Controller {
         $this->usuarios = array();
     }
 
+    private function getUsuarios() {
+        $result = $this->usuarioModel->selectAllUsers();
+        if ($result) {
+            return $result;
+        }
+    }
+
     public function index() {
         if (isset($_POST['enviar'])) {
             $this->novoUsuario();
         }
-        $this->usuarios['usuarios'] = $this->usuarioModel->selectAllUsers();
-        $this->loadTemplate('usuarios', $this->usuarios);
+        $data['usuarios'] = $this->getUsuarios();
+        $this->loadTemplate('usuarios', $data);
     }
 
     public function novo() {
@@ -85,11 +92,49 @@ class usuarioController extends Controller {
         }
     }
 
-    public function editar($id) {
-        if (!empty($id) && is_numeric($id)) {
+    public function editar2($id) {
+        global $settings;
+        $data = array();
+
+        if (isset($_POST['alterar'])) {
+            $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+            $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+            if (!empty($nome) && !empty($email) && !empty($id) && is_numeric($id)) {
+
+                $data = array(
+                    'user_name' => $nome,
+                    'user_email' => $email
+                );
+
+                $where = array(
+                    'user_id' => $id
+                );
+
+                $result = $this->usuarioModel->updateUser($data, $where, '');
+                if ($result) {
+                    header('Location: ' . $settings['url'] . '/usuario');
+                    die();
+                } else {
+                    $data['usuario'] = $this->usuarioModel->selectUser($id);
+                    $data['msg']['type'] = 'danger';
+                    $data['msg']['message'] = 'Falha ao tentar atualizar os dados do usuário.';
+                    $this->loadTemplate('editar', $data);
+                }
+            }
+        } else if (!empty($id) && is_numeric($id)) {
             $id = addslashes($id);
-            $data['usuario'] = $this->usuarioModel->selectUser($id);
-            $this->loadTemplate('editar', $data);
+            $result = $this->usuarioModel->selectUser($id);
+
+            if ($result) {
+                $data['usuario'] = $result;
+                $this->loadTemplate('editar', $data);
+            } else {
+                header('Location: ' . $settings['url'] . '/usuario');
+            }
+        } else {
+            header('Location: ' . $settings['url'] . '/usuario');
         }
     }
 
@@ -101,5 +146,4 @@ class usuarioController extends Controller {
         return FALSE;
     }
 
-//put your code here
 }

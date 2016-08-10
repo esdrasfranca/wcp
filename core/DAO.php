@@ -27,6 +27,7 @@ class DAO {
      * @return mixed Retorna um array caso a instrução sql retorno dados do banco ou FALSE caso nennhum dado reja retornado.
      */
     public function query($sql) {
+
         if (!empty($sql)) {
             try {
                 $result = $this->connection->query($sql);
@@ -88,7 +89,8 @@ class DAO {
     public function update($sql) {
         if (!empty($sql)) {
             try {
-                if ($this->connection->exec($sql)) {
+                $result = $this->connection->exec($sql);
+                if ($result > 0) {
                     return TRUE;
                 } else {
                     return FALSE;
