@@ -71,6 +71,7 @@ class DAO {
      * NULL se a string passada por parâmetro estiver vazia.
      */
     public function insert($sql) {
+        echo $sql;
         if (!empty($sql)) {
             try {
                 $result = $this->connection->exec($sql);

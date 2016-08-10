@@ -1,7 +1,10 @@
+<?php
+global $settings;
+?>
 <h1>Novo Post</h1>
 
-<form method="post">
-    
+<form method="post" action="<?php echo $settings['url']; ?>/posts">
+
     <table>
         <tr>
             <td><label for="titulo_post">Título do post</label></td>

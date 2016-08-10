@@ -20,8 +20,6 @@ class Model {
 
     protected function selectAll() {
         $sql = $this->dao->prepare_sql->select($this->tableName);
-        var_dump($sql);
-        exit;
         return $this->dao->query($sql);
     }
 
