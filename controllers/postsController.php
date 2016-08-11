@@ -36,6 +36,24 @@ class postsController extends Controller {
         $this->loadTemplate('novo_post', $data);
     }
 
+    public function excluir($id) {
+        global $settings;
+        if(!empty($id) && is_numeric($id)) {
+            $result = $this->postModel->deletePost(array('user_id'=>$id));
+
+            if($result) {
+                header('Location: ' . $settings['url']. '/posts');
+                die();
+            } else {
+                $data['posts'] = $this->postModel->selectAllPosts();
+                $data['msg']['type'] = 'danger';
+                $data['msg']['message'] = 'Falha ao tentar excluir o post selecionado.';
+                $this->loadTemplate('posts',$data);
+            }
+
+        }
+    }
+
     private function addPost() {
         global $settings;
         $titulo = filter_input(INPUT_POST, 'titulo_post', FILTER_SANITIZE_STRING);
@@ -55,17 +73,6 @@ class postsController extends Controller {
         if ($result > 0) {
             header('Location: ' . $settings['url'] . '/posts');
         }
-    }
-
-    private function getSlug($string) {
-
-        if (!empty($string)) {
-            $string = Util::sanitizeString($string);
-            $string = strtolower($string);
-        }
-
-        echo $string;
-        exit;
     }
 
 }

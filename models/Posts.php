@@ -35,4 +35,17 @@ class Posts extends Model {
         return $this->selectAll();
     }
 
+    /**
+    *   Exclui um post
+    *   @param array $data Array 
+    *   @return mixed Retorna TRUE caso a instruçã seja realizada. Retorna FALSE caso não seja possivel excluir.
+    *   Retorna -1 caso o array passado por parâmetro esteja vazio.
+    */
+    public function deletePost($data = array()) {
+        if(count($data) > 0) {
+            return $this->delete($data);
+        }
+        return -1;
+    }
+
 }
