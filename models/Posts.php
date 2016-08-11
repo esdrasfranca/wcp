@@ -30,22 +30,37 @@ class Posts extends Model {
         }
         return -1;
     }
-    
-    public function selectAllPosts(){
+
+    public function selectAllPosts() {
         return $this->selectAll();
     }
 
     /**
-    *   Exclui um post
-    *   @param array $data Array 
-    *   @return mixed Retorna TRUE caso a instruçã seja realizada. Retorna FALSE caso não seja possivel excluir.
-    *   Retorna -1 caso o array passado por parâmetro esteja vazio.
-    */
+     *   Exclui um post
+     *   @param array $data Array 
+     *   @return mixed Retorna TRUE caso a instruçã seja realizada. Retorna FALSE caso não seja possivel excluir.
+     *   Retorna -1 caso o array passado por parâmetro esteja vazio.
+     */
     public function deletePost($data = array()) {
-        if(count($data) > 0) {
+        if (count($data) > 0) {
             return $this->delete($data);
         }
         return -1;
+    }
+
+    /**
+     * Seleciona o post referente ao id informado.
+     * @param int $id Id do post.
+     * @return mixed Retorna um array caso o id seja válido ou FALSE caso contrário.
+     */
+    public function selectPostById($id) {
+        return $this->select(array(), array(
+                    'post_id' => $id
+        ));
+    }
+
+    public function updatePost($data, $where, $cond = '') {
+        return $this->update($data, $where, $cond);
     }
 
 }

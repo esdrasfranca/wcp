@@ -27,7 +27,7 @@ class DAO {
      * @return mixed Retorna um array caso a instrução sql retorno dados do banco ou FALSE caso nennhum dado reja retornado.
      */
     public function query($sql) {
-        echo 'DAO::query: sql = '.$sql;
+        //echo 'DAO::query: sql = '.$sql;
         if (!empty($sql)) {
             try {
                 $result = $this->connection->query($sql);
@@ -48,7 +48,7 @@ class DAO {
      * @return mixed Retorna um array caso a consulta retorne dados ou FALSE caso a tabela esteja vazia.
      */
     public function selectAll($table) {
-        echo 'DAO::selectAll: sql = '.$sql;
+        //echo 'DAO::selectAll: sql = '.$sql;
         if (!empty($table)) {
             try {
                 $sql = 'SELECT * FROM ' . $table;
@@ -72,7 +72,7 @@ class DAO {
      * NULL se a string passada por parâmetro estiver vazia.
      */
     public function insert($sql) {
-        echo 'DAO::insert: sql = '.$sql;
+        //echo 'DAO::insert: sql = '.$sql;
         if (!empty($sql)) {
             try {
                 $result = $this->connection->exec($sql);
@@ -89,7 +89,7 @@ class DAO {
     }
 
     public function update($sql) {
-        echo 'DAO::update: sql = '.$sql;
+        //echo 'DAO::update: sql = '.$sql;
         if (!empty($sql)) {
             try {
                 $result = $this->connection->exec($sql);
@@ -105,7 +105,7 @@ class DAO {
     }
 
     public function delete($sql) {
-        echo 'DAO::delete: sql = '.$sql;
+        //echo 'DAO::delete: sql = '.$sql;
         if (!empty($sql)) {
             try {
                 if ($this->connection->exec($sql)) {

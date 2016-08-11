@@ -1,5 +1,4 @@
-<?php global $settings;
-?>
+<?php global $settings; ?>
 
 <h1>Posts</h1>
 
@@ -12,9 +11,12 @@
         <?php foreach ($posts as $value): ?>
             <tr>
                 <td><?php echo $value['post_id']; ?></td>
-                <td><?php echo utf8_encode($value['post_titulo']); ?></td>
+                <td><?php echo $value['post_titulo']; ?></td>
                 <td><?php echo $value['post_data']; ?></td>
-                <td><a href="<?php echo $settings['url']; ?>/posts/excluir/<?php echo $value['post_id']; ?>">Excluir</a></td>
+                <td>
+                    <a href="<?php echo $settings['url']; ?>/posts/excluir/<?php echo $value['post_id']; ?>">Excluir</a>
+                    <a href="<?php echo $settings['url']; ?>/posts/editar/<?php echo $value['post_id']; ?>">Editar</a>
+                </td>
             </tr>
         <?php endforeach; ?>
     <?php else: ?>

@@ -12,6 +12,7 @@ and open the template in the editor.
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
+        
         <title>WCP - Work Control Panel</title>
         <link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/css/template.css"/>
         <link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/css/oocss.css"/>

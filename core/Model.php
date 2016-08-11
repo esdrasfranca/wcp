@@ -34,7 +34,7 @@ class Model {
     }
 
     protected function update($data, $where, $cond = 'AND') {
-        $sql = $this->dao->prepare_sql->update(Users::TABLE_NAME, $data, $where, $cond);
+        $sql = $this->dao->prepare_sql->update($this->tableName, $data, $where, $cond);
         return $this->dao->update($sql);
     }
 
