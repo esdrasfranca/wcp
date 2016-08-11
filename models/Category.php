@@ -13,10 +13,10 @@
  */
 class Category extends Model {
 
-    const TABEL_NAME = 'category';
+    const TABLE_NAME = 'category';
 
     public function __construct() {
-        parent::__construct(Category::TABEL_NAME);
+        parent::__construct(Category::TABLE_NAME);
     }
 
     public function selectAllCategory() {

@@ -8,13 +8,18 @@
 </div>
 
 <table>
-
-    <?php foreach ($posts as $value): ?>
+    <?php if ($posts): ?>
+        <?php foreach ($posts as $value): ?>
+            <tr>
+                <td><?php echo $value['post_id']; ?></td>
+                <td><?php echo utf8_encode($value['post_titulo']); ?></td>
+                <td><?php echo $value['post_data']; ?></td>
+                <td><a href="<?php echo $settings['url']; ?>/posts/excluir/<?php echo $value['post_id']; ?>">Excluir</a></td>
+            </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
         <tr>
-            <td><?php echo $value['post_id'];?></td>
-            <td><?php echo utf8_encode($value['post_titulo']);?></td>
-            <td><?php echo $value['post_data'];?></td>
-            <td><a href="<?php echo $settings['url'];?>/posts/excluir/<?php echo $value['post_id'];?>">Excluir</a></td>
+            <td>Nenhum resultado encontrado.</td>
         </tr>
-    <?php endforeach; ?>
+    <?php endif; ?>
 </table>

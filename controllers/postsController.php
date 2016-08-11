@@ -39,7 +39,7 @@ class postsController extends Controller {
     public function excluir($id) {
         global $settings;
         if(!empty($id) && is_numeric($id)) {
-            $result = $this->postModel->deletePost(array('user_id'=>$id));
+            $result = $this->postModel->deletePost(array('post_id'=>$id));
 
             if($result) {
                 header('Location: ' . $settings['url']. '/posts');
@@ -56,17 +56,18 @@ class postsController extends Controller {
 
     private function addPost() {
         global $settings;
-        $titulo = filter_input(INPUT_POST, 'titulo_post', FILTER_SANITIZE_STRING);
-        $desc = filter_input(INPUT_POST, 'desc_post', FILTER_SANITIZE_STRING);
+        $titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
+        $desc = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_STRING);
+        $categoria = filter_input(INPUT_POST, 'categoria', FILTER_SANITIZE_NUMBER_INT);
         $post = $_POST['post'];
-
         $slug = Util::sanitizeString($titulo);
 
         $data = array(
             'post_titulo' => $titulo,
             'post_descricao' => $desc,
             'post_post' => $post,
-            'post_slug' => $slug
+            'post_slug' => $slug,
+            'cat_id'=>$categoria
         );
         $result = $this->postModel->insertPost($data);
 
