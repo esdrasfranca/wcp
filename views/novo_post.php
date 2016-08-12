@@ -19,7 +19,7 @@ global $settings;
                 <select id="categoria" name="categoria" required="true">
                     <option value="" disabled="true">Escolha uma categoria</option>
                     <?php foreach ($categorias as $key => $value) : ?>
-                        <option value="<?php echo $value['cat_id']; ?>"><?php echo $value['cat_name']; ?></option>
+                        <option value="<?php echo $value['cat_id']; ?>"><?php echo utf8_encode($value['cat_name']); ?></option>
                     <?php endforeach; ?>
                 </select>
             </td>
@@ -27,4 +27,4 @@ global $settings;
     </table>
     <textarea id="post" name="post"></textarea>
     <input type="submit" name="enviar" value="Enviar"/>
-</form>
+</form>            

@@ -16,7 +16,7 @@ and open the template in the editor.
         <title>WCP - Work Control Panel</title>
         <link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/css/template.css"/>
         <link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/css/oocss.css"/>
-        <script src="<?php echo $settings['url']; ?>/assets/js/ckeditor/ckeditor.js"></script>
+        <script src="<?php echo $settings['url']; ?>/resources/ckeditor/ckeditor.js"></script>
     </head>
     <body>
         <div class="container">
@@ -41,17 +41,19 @@ and open the template in the editor.
             </div><!--main-content-->
         </div><!-- container-->
 
-        <!--
-        ++++++++++++++++++++++++++++++++++++++++++
-        Scripts 
-        ++++++++++++++++++++++++++++++++++++++++++
-        -->
-
-
+        <!-- SCRIPTS -->
         <script>
-            // Replace the <textarea id="editor1"> with a CKEditor
-            // instance, using default configuration.
-            CKEDITOR.replace('post');
+           CKEDITOR.replace( 'post', {
+                    filebrowserBrowseUrl : '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/ckfinder.html',
+                    filebrowserImageBrowseUrl : '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/ckfinder.html?type=Images',
+                    filebrowserFlashBrowseUrl : '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/ckfinder.html?type=Flash',
+                    filebrowserUploadUrl : '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                    filebrowserImageUploadUrl : '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                    filebrowserFlashUploadUrl : '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                });
         </script>
+
+
+        
     </body>
 </html>
