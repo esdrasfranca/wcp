@@ -11,9 +11,13 @@
  *
  * @author Esdras
  */
-class Core {
+class Core
+{
 
-    public function run() {
+    public function run()
+    {
+
+
         $currencecAtion = null;
         $currenceController = null;
         $params = array();
@@ -45,7 +49,15 @@ class Core {
         $controller = new $currenceController(); //Instancia o controller
         call_user_func_array(array($controller, $currenceAction), $params);
 
+    }
 
+    private function isSettings()
+    {
+        global $settings;
+        if (count($settings) > 0) {
+            return TRUE;
+        }
+        return FALSE;
     }
 
 }
