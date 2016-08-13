@@ -22,12 +22,12 @@ class configuracaoController extends Controller {
 
     public function index() {
         if (isset($_POST['enviar'])) {
-            $this->configuration();
+            $this->addConfiguration();
         }
         $this->loadTemplate('config', array());
     }
 
-    private function configuration() {
+    private function addConfiguration() {
         $url = filter_input(INPUT_POST, 'url_site', FILTER_SANITIZE_STRING);
         $host = filter_input(INPUT_POST, 'dbhost', FILTER_SANITIZE_STRING);
         $dbName = filter_input(INPUT_POST, 'dbname', FILTER_SANITIZE_STRING);

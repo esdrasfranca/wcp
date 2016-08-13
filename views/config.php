@@ -23,7 +23,13 @@
             </tr>
             <tr>
                 <td><label for="dbdrive">Driver do banco de dados</label></td>
-                <td><input type="text" placeholder="" name="dbdrive" required="true"/></td>
+
+                <td>
+                    <select name="dbdrive" required id="dbdrive">
+                        <option value="" disabled selected>Escolha o driver do banco</option>
+                        <option value="mysql" >MySQL</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td><label for="dbpassw">Senha do banco de dados</label></td>
