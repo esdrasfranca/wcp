@@ -23,7 +23,7 @@ and open the template in the editor.
 
             <header class="main-header">
                 <section class="logo">
-                    <a href="<?php echo $settings['url']; ?>/home"><h1>WCP</h1></a>
+                    <a href="<?php echo $settings['url']; ?>"><h1>WCP</h1></a>
                 </section><!--logo-->
                 <nav class="menu-bar"></nav><!--menu-bar-->
             </header><!--main-header-->
