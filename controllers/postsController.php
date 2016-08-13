@@ -5,7 +5,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  * Description of publicarController
  *
@@ -52,6 +51,7 @@ class postsController extends Controller {
     }
 
     public function editar($id) {
+        //echo 'editar';exit;
         global $settings;
 
         if (isset($_POST['enviar'])) {

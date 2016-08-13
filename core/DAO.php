@@ -27,12 +27,12 @@ class DAO {
      * @return mixed Retorna um array caso a instrução sql retorno dados do banco ou FALSE caso nennhum dado reja retornado.
      */
     public function query($sql) {
-        //echo 'DAO::query: sql = '.$sql;
         if (!empty($sql)) {
             try {
-                $result = $this->connection->query($sql);
-                if ($result && $result->rowCount() > 0) {
-                    return $result->fetchAll(PDO::FETCH_ASSOC);
+                $stm = $this->connection->prepare($sql);
+                $stm->execute();
+                if ($stm->rowCount() > 0) {
+                    return $stm->fetchAll(PDO::FETCH_ASSOC);
                 } else {
                     return FALSE;
                 }
@@ -40,6 +40,7 @@ class DAO {
                 echo $exc->getTraceAsString();
             }
         }
+
     }
 
     /**
@@ -49,13 +50,28 @@ class DAO {
      */
     public function selectAll($table) {
         //echo 'DAO::selectAll: sql = '.$sql;
+//        if (!empty($table)) {
+//            try {
+//                $sql = 'SELECT * FROM ' . $table;
+//                $result = $this->connection->query($sql);
+//
+//                if ($result && $result->rowCount() > 0) {
+//                    return $result->fetchAll(PDO::FETCH_ASSOC);
+//                } else {
+//                    return FALSE;
+//                }
+//            } catch (PDOException $exc) {
+//                echo $exc->getTraceAsString();
+//            }
+//        }
         if (!empty($table)) {
             try {
-                $sql = 'SELECT * FROM ' . $table;
-                $result = $this->connection->query($sql);
-
-                if ($result && $result->rowCount() > 0) {
-                    return $result->fetchAll(PDO::FETCH_ASSOC);
+                $sql = 'SELECT * FROM ?';
+                $stm = $this->connection->prepare($sql);
+                $stm->bindParam(1, $table, PDO::PARAM_STR);
+                $stm->execute();
+                if ($stm->rowCount() > 0) {
+                    return $stm->fetchAll(PDO::FETCH_ASSOC);
                 } else {
                     return FALSE;
                 }
@@ -72,11 +88,10 @@ class DAO {
      * NULL se a string passada por parâmetro estiver vazia.
      */
     public function insert($sql) {
-        //echo 'DAO::insert: sql = '.$sql;
         if (!empty($sql)) {
             try {
-                $result = $this->connection->exec($sql);
-                if ($result > 0) {
+                $stm = $this->connection->prepare($sql);
+                if ($stm->execute()) {
                     return $this->connection->lastInsertId();
                 } else {
                     return FALSE;
@@ -86,18 +101,15 @@ class DAO {
             }
         }
         return NULL;
+
     }
 
     public function update($sql) {
         //echo 'DAO::update: sql = '.$sql;
         if (!empty($sql)) {
             try {
-                $result = $this->connection->exec($sql);
-                if ($result > 0) {
-                    return TRUE;
-                } else {
-                    return FALSE;
-                }
+                $stm = $this->connection->prepare($sql);
+                return $stm->execute();
             } catch (PDOException $exc) {
                 echo $exc->getTraceAsString();
             }
@@ -108,11 +120,8 @@ class DAO {
         //echo 'DAO::delete: sql = '.$sql;
         if (!empty($sql)) {
             try {
-                if ($this->connection->exec($sql)) {
-                    return TRUE;
-                } else {
-                    return FALSE;
-                }
+                $stm = $this->connection->prepare($sql);
+                return $stm->execute();
             } catch (PDOException $exc) {
                 echo $exc->getTraceAsString();
             }

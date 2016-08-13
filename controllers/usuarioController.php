@@ -92,11 +92,12 @@ class usuarioController extends Controller {
         }
     }
 
-    public function editar2($id) {
+    public function editar($id) {
         global $settings;
         $data = array();
 
         if (isset($_POST['alterar'])) {
+
             $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
@@ -111,6 +112,8 @@ class usuarioController extends Controller {
                 $where = array(
                     'user_id' => $id
                 );
+                var_dump($data);
+                var_dump($where);
 
                 $result = $this->usuarioModel->updateUser($data, $where, '');
                 if ($result) {
@@ -120,16 +123,17 @@ class usuarioController extends Controller {
                     $data['usuario'] = $this->usuarioModel->selectUser($id);
                     $data['msg']['type'] = 'danger';
                     $data['msg']['message'] = 'Falha ao tentar atualizar os dados do usuário.';
-                    $this->loadTemplate('editar', $data);
+                    $this->loadTemplate('editar_usuario', $data);
                 }
             }
         } else if (!empty($id) && is_numeric($id)) {
+
             $id = addslashes($id);
             $result = $this->usuarioModel->selectUser($id);
 
             if ($result) {
                 $data['usuario'] = $result;
-                $this->loadTemplate('editar', $data);
+                $this->loadTemplate('editar_usuario', $data);
             } else {
                 header('Location: ' . $settings['url'] . '/usuario');
             }
