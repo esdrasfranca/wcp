@@ -16,38 +16,48 @@ class Core
 
     public function run()
     {
+        $currentcAtion = '';
+        $currentController = '';
+        $param = array();
 
-
-        $currencecAtion = null;
-        $currenceController = null;
-        $params = array();
-
-        $url = explode("index.php", $_SERVER['PHP_SELF']);
-        $url = end($url);
-        if (!empty($url)) {
-            $url = explode("/", $url);
+        if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] != '') {
+            $url = explode("wcp", $_SERVER['REQUEST_URI']);
             array_shift($url);
-
-            $currenceController = $url[0] . 'Controller';
+            $url = explode('/', $url[0]);
             array_shift($url);
+            var_dump($url);
 
-            if (isset($url[0]) && $url[0] != "") {
-                $currenceAction = $url[0];
+
+            if (isset($url[0]) && $url[0] != '') {
+                $currentController = $url[0] . 'Controller';
                 array_shift($url);
             } else {
-                $currenceAction = "index";
+                $currentController = 'homeController';
+                $currentcAtion = 'index';
+                array_shift($url);
+            }
+
+            if (isset($url[0]) && !empty($url[0])) {
+                $currentcAtion = $url[0];
+                array_shift($url);
+            } else {
+                $currentcAtion = 'index';
+                array_shift($url);
             }
 
             if (count($url) > 0) {
-                $params = $url;
+                $param = $url;
+                array_shift($url);
             }
-        } else {
-            $currenceController = "homeController";
-            $currenceAction = "index";
+
+
         }
 
-        $controller = new $currenceController(); //Instancia o controller
-        call_user_func_array(array($controller, $currenceAction), $params);
+        echo 'Controller: ' . $currentController;
+        echo ' - Action: ' . $currentcAtion;
+        exit;
+        $controller = new $currentController(); //Instancia o controller
+        call_user_func_array(array($controller, $currentcAtion), $param);
 
     }
 
