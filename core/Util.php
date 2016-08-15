@@ -22,7 +22,7 @@ class Util {
         $str = preg_replace('/[ç]/ui', 'c', $str);
         // $str = preg_replace('/[,(),;:|!"#$%&/=?~^><ªº-]/', '_', $str);
         $str = preg_replace('/[^a-z0-9]/i', '_', $str);
-        $str = preg_replace('/_+/', '_', $str);
+        $str = preg_replace('/_+/', '-', $str);
         return strtolower($str);
     }
 
