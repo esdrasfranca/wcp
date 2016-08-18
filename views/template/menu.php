@@ -1,4 +1,4 @@
-<ul>
+<ul class="menu">
     <li>Ir para o Site</li>
     <a href="<?php echo $settings['url']; ?>/usuario">
         <li>Usuários</li>

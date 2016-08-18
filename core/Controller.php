@@ -27,7 +27,7 @@ abstract class Controller {
     }
 
     public function loadTemplate($viewName, $viewData = array()) {
-        include 'views/template/template.php';
+        include 'views/template/template2.php';
     }
 
     public function loadViewInTemplate($viewName, $viewData = array()) {

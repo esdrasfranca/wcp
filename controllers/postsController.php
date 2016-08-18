@@ -73,6 +73,9 @@ class postsController extends Controller {
     }
 
     private function addPost() {
+        
+        var_dump($_FILES);exit;
+        
         global $settings;
         $titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
         $desc = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_STRING);

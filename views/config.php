@@ -1,44 +1,35 @@
-<h1>Configurações</h1>
+<div class="content" style="width: 50%;">
 
-<fieldset><legend>Banco de dados</legend>
-    <form method="post">
+    <div class="content-bar"></div>
 
-        <table>
-            <tr>
-                <td><label for="url_site">URL do site</label></td>
-                <td><input type="url" name="url_site" required="true"/></td>
-            </tr>
-            <tr>
-                <td><label for="dbhost">Host do bando de dados</label></td>
-                <td><input type="text" placeholder="" name="dbhost" required="true"/></td>
-            </tr>
+    <div class="content-body">
+        <div class="content-header">
+            <h1>Configurações</h1>
+        </div>
+        <form method="post" class="fw-form">
 
-            <tr>
-                <td><label for="dbname">Nome do banco de dados</label></td>
-                <td><input type="text" placeholder="" name="dbname" required="true"/></td>
-            </tr>
-            <tr>
-                <td><label for="dbuser">Usuário do bando de dados</label></td>
-                <td><input type="text" placeholder="" name="dbuser" required="true"/></td>
-            </tr>
-            <tr>
-                <td><label for="dbdrive">Driver do banco de dados</label></td>
-
-                <td>
-                    <select name="dbdrive" required id="dbdrive">
-                        <option value="" disabled selected>Escolha o driver do banco</option>
-                        <option value="mysql" >MySQL</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="dbpassw">Senha do banco de dados</label></td>
-                <td><input type="password" placeholder="" name="dbpassw"/></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>    <input type="submit" value="Salvar configurações" name="enviar"/></td>
-            </tr>
-        </table>
-    </form>
-</fieldset>
+            <label for="url_site" class="fw-form-group">URL do site</label>
+            <input type="url" name="url_site" required="true" class="fw-form-group"/>
+         
+            <label for="dbhost" class="fw-form-group">Host do bando de dados</label>
+            <input type="text" placeholder="" name="dbhost" required="true" class="fw-form-group"/>
+         
+            <label for="dbname" class="fw-form-group">Nome do banco de dados</label>
+            <input type="text" placeholder="" name="dbname" required="true" class="fw-form-group"/>
+          
+            <label for="dbuser" class="fw-form-group">Usuário do bando de dados</label>
+            <input type="text" placeholder="" name="dbuser" required="true" class="fw-form-group"/>
+            
+            <label for="dbdrive" class="fw-form-group">Driver do banco de dados</label>
+            <select name="dbdrive" required id="dbdrive" class="fw-form-group fw-form-group-select">
+                <option value="" disabled selected>Escolha o driver do banco</option>
+                <option value="mysql" >MySQL</option>
+            </select>
+           
+            <label for="dbpassw" class="fw-form-group">Senha do banco de dados</label>
+            <input type="password" placeholder="" name="dbpassw" class="fw-form-group"/>
+           
+            <input type="submit" value="Salvar configurações" name="enviar" class="fw-btn fw-btn-success"/>
+        </form>
+    </div>
+</div>
