@@ -25,8 +25,6 @@ class Core
             array_shift($url);
             $url = explode('/', $url[0]);
             array_shift($url);
-            var_dump($url);
-
 
             if (isset($url[0]) && $url[0] != '') {
                 $currentController = $url[0] . 'Controller';
@@ -53,9 +51,6 @@ class Core
 
         }
 
-        echo 'Controller: ' . $currentController;
-        echo ' - Action: ' . $currentcAtion;
-        exit;
         $controller = new $currentController(); //Instancia o controller
         call_user_func_array(array($controller, $currentcAtion), $param);
 
