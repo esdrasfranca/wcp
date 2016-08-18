@@ -14,11 +14,12 @@ and open the template in the editor.
         <meta charset="UTF-8">
 
         <title>WCP - Work Control Panel</title>
-        <!--<link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/resources/bootstrap/css/bootstrap.min.css"/>-->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet"/>
         <link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/css/template2.css"/>
+        <script src="<?php echo $settings['url']; ?>/assets/js/jquery.js"></script>
         <script src="<?php echo $settings['url']; ?>/resources/ckeditor/ckeditor.js"></script>
-        <script src="<?php echo $settings['url']; ?>/assets/resources/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?php echo $settings['url']; ?>/assets/js/jquery.js"></script>
+        <script src="<?php echo $settings['url']; ?>/assets/js/wcp.js"></script>
     </head>
     <body>
         <div id="main-container">

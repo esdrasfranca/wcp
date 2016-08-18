@@ -13,13 +13,13 @@ global $settings;
         <form method="post" action="<?php echo $settings['url']; ?>/posts" class="fw-form" enctype="multipart/form-data">
 
             <label for="titulo" class="fw-form-group">Título do post</label>
-            <input type="text" id="titulo" name="titulo" required="true" class="fw-form-group"/>
+            <input type="text" id="titulo" name="titulo" required="true" class="fw-form-group title"/>
 
             <label for="descricao" class="fw-form-group">Descrição</label>
-            <textarea id="descricao" name="descricao" class="fw-form-group" rows="5"></textarea>
+            <textarea id="descricao" name="descricao" class="fw-form-group fw-form-group-area" rows="5"></textarea>
             
-            <label for="imagem" class="fw-form-group">Imagem</label>
-            <input type="file" name="image" id="imagem" class="fw-form-group"/>
+            <label for="image" class="fw-form-group">Imagem</label>
+            <input type="file" name="image" id="image" class="fw-form-group"/>
             
             <label for="categoria" class="fw-form-group">Categoria</label>
             <select id="categoria" name="categoria" required="true" class="fw-form-group fw-form-group-select" >

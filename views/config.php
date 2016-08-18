@@ -1,4 +1,4 @@
-<div class="content" style="width: 50%;">
+<div class="content" >
 
     <div class="content-bar"></div>
 

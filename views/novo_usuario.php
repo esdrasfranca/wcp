@@ -1,4 +1,4 @@
-
+<?php global $settings;?>
 <div class="content">
     <div class="content-bar"></div>
     <div class="content-body">
@@ -22,7 +22,7 @@
             <label for="senha_user" class="fw-form-group">Senha:</label>
             <input type="password" required="true" name="senha_user" class="fw-form-group" placeholder="******"/>
             <input type="submit" value="Enviar" name="submit_new_user" id="enviar" class="fw-btn fw-btn-success"/>
-            <a href="#" class="fw-link">Cancelar</a>
+            <a href="<?php echo $settings['url'];?>/usuario" class="fw-link fw-link-danger">Cancelar</a>
         </form>
     </div>
 </div>

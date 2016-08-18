@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
  * Description of publicarController
  *
@@ -73,9 +74,6 @@ class postsController extends Controller {
     }
 
     private function addPost() {
-        
-        var_dump($_FILES);exit;
-        
         global $settings;
         $titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
         $desc = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_STRING);
@@ -88,11 +86,18 @@ class postsController extends Controller {
             'post_descricao' => $desc,
             'post_post' => $post,
             'post_slug' => $slug,
+            'post_image' => '',
             'cat_id' => $categoria
         );
         $result = $this->postModel->insertPost($data);
 
         if ($result > 0) {
+            $img = $this->uploadFile();
+            $this->postModel->updatePost(array(
+                'post_image'=>$img
+            ), array(
+                'post_id'=>$result
+            ));
             header('Location: ' . $settings['url'] . '/posts');
             die();
         }
@@ -131,6 +136,20 @@ class postsController extends Controller {
             } else {
                 
             }
+        }
+    }
+
+    private function uploadFile() {
+        global $settings;
+        if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
+            $up = new Upload();
+            $up->setName($_FILES['image']['name']);
+            $up->setSize($_FILES['image']['size']);
+            $up->setTmp_name($_FILES['image']['tmp_name']);
+            $up->setType($_FILES['image']['type']);
+            $up->setErro($_FILES['image']['error']);
+            
+            return Util::prepareUpload($settings['root_dir'] . '/uploads', $up);
         }
     }
 

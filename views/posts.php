@@ -26,7 +26,7 @@
                     <tr>
                         <td><?php echo $value['post_id']; ?></td>
                         <td><?php echo $value['post_titulo']; ?></td>
-                        <td><?php echo $value['post_data']; ?></td>
+                        <td><?php echo date('d/m/Y H:i:s', strtotime($value['post_data'])); ?></td>
                         <td>
                             <a href="<?php echo $settings['url']; ?>/posts/excluir/<?php echo $value['post_id']; ?>">Excluir</a>
                             |
