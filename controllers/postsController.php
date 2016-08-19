@@ -37,9 +37,11 @@ class postsController extends Controller {
     public function excluir($id) {
         global $settings;
         if (!empty($id) && is_numeric($id)) {
+            $post = $this->postModel->selectPostById($id);
             $result = $this->postModel->deletePost(array('post_id' => $id));
 
             if ($result) {
+                Util::deleteFile($settings['upload_dir'] .'/' . $post[0]['post_image']);
                 header('Location: ' . $settings['url'] . '/posts');
                 die();
             } else {
@@ -56,7 +58,7 @@ class postsController extends Controller {
         global $settings;
 
         if (isset($_POST['enviar'])) {
-            $this->salvarAlteracao($id);
+            $this->atualizarPost($id);
         } else if (!empty($id) && is_numeric($id)) {
             $result = $this->postModel->selectPostById($id);
             if ($result) {
@@ -94,21 +96,16 @@ class postsController extends Controller {
         if ($result > 0) {
             $img = $this->uploadFile();
             $this->postModel->updatePost(array(
-                'post_image'=>$img
-            ), array(
-                'post_id'=>$result
+                'post_image' => $img
+                    ), array(
+                'post_id' => $result
             ));
             header('Location: ' . $settings['url'] . '/posts');
             die();
         }
     }
 
-    private function getCategorias() {
-        $cat = new Category();
-        return $cat->selectAllCategory();
-    }
-
-    private function salvarAlteracao($id) {
+    private function atualizarPost($id) {
         global $settings;
         if (isset($_POST['enviar'])) {
             $titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
@@ -124,6 +121,12 @@ class postsController extends Controller {
                 'post_slug' => $slug,
                 'cat_id' => $categoria
             );
+
+            if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
+                $var = $this->uploadFile();
+                $data['post_image'] = $var;
+                Util::deleteFile($settings['root_dir'] . '/uploads/' . $var);
+            }
 
             $where = array(
                 'post_id' => $id
@@ -141,6 +144,7 @@ class postsController extends Controller {
 
     private function uploadFile() {
         global $settings;
+        //var_dump($_FILES);exit;
         if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
             $up = new Upload();
             $up->setName($_FILES['image']['name']);
@@ -148,9 +152,14 @@ class postsController extends Controller {
             $up->setTmp_name($_FILES['image']['tmp_name']);
             $up->setType($_FILES['image']['type']);
             $up->setErro($_FILES['image']['error']);
-            
-            return Util::prepareUpload($settings['root_dir'] . '/uploads', $up);
+
+            return Util::prepareUpload($up);
         }
+    }
+
+    private function getCategorias() {
+        $cat = new Category();
+        return $cat->selectAllCategory();
     }
 
 }

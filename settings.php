@@ -9,7 +9,7 @@ if (ENVIRONMENT == 'development') {
     $settings['dbname'] = 'schema_wcp';
     $settings['host'] = 'localhost';
     $settings['user'] = 'root';
-    $settings['passw'] = 'admin';
+    $settings['passw'] = '';
 } else {
     $settings['dbname'] = '';
     $settings['host'] = '';
@@ -17,5 +17,6 @@ if (ENVIRONMENT == 'development') {
     $settings['passw'] = '';
 }
 $settings['root_dir'] = $_SERVER['DOCUMENT_ROOT'] . 'wcp';
+$settings['upload_dir'] = $settings['root_dir'] . '/uploads';
 $settings['url'] = 'http://' . $_SERVER['HTTP_HOST'] . '/wcp';
 

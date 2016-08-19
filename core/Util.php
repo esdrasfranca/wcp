@@ -53,14 +53,12 @@ class Util {
      * Caso a extenção não seja aceita retorna UPLOAD_ERROR_NO_SUPORT.
      * Caso haja algum erro no upload retorna UPLOAD_ERROR_FAIL.
      */
-    public static function prepareUpload($upload_dir = '', Upload $upload) {
+    public static function prepareUpload(Upload $upload) {
+        global $settings;
         $extencions = array("pdf", "doc", "docx", "ppt", "pptx", "mp4", "mp3", "jpg", "jpeg", "gif", "png");
 
-        if (empty($upload_dir)) {
-            $upload_dir = __DIR__ . '/uploads';
-            mkdir($upload_dir);
-        } else if (!file_exists($upload_dir)) {
-            mkdir($upload_dir);
+        if (!file_exists($settings['upload_dir'])) {
+            mkdir($settings['upload_dir'], 0777);
         }
 
         $array_name = explode('.', $upload->getName());
@@ -73,10 +71,21 @@ class Util {
 
         $name = Util::sanitizeString($name) . '-' . time();
 
-        if (move_uploaded_file($upload->getTmp_name(), $upload_dir . "/" . $name . "." . $ext)) {
+        if (move_uploaded_file($upload->getTmp_name(), $settings['upload_dir'] . "/" . $name . "." . $ext)) {
             return $name . "." . $ext;
         } else {
             return Util::UPLOAD_ERROR_FAIL;
+        }
+    }
+
+    /**
+     * Exclui um arquivo de um diretório.
+     * @param string $filename Caminho completo do arquivo a ser excluido.
+     * @return boolean TRUE se a explusão for bem sucedida e FALSE caso o arquivo não exista.
+     */
+    public static function deleteFile($filename) {
+        if (file_exists($filename)) {
+            return unlink($filename);
         }
     }
 
