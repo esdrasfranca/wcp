@@ -2,7 +2,7 @@
 global $settings;
 ?>
 
-<div class="content">
+<div class="content" style="width: 50%;">
 
     <div class="content-bar"></div>
     <div class="content-body">
@@ -20,12 +20,17 @@ global $settings;
             <thead>
                 <tr>
                     <th>Nome da categoria</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($categorias as $categoria): ?>
                     <tr>
                         <td><?php echo $categoria['cat_name']; ?></td>
+                        <td>
+                            <a href="#">Editar</a> |
+                            <a href="#">Excluir</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
