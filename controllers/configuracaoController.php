@@ -28,6 +28,7 @@ class configuracaoController extends Controller {
     }
 
     private function addConfiguration() {
+        global $settings;
         $url = filter_input(INPUT_POST, 'url_site', FILTER_SANITIZE_STRING);
         $host = filter_input(INPUT_POST, 'dbhost', FILTER_SANITIZE_STRING);
         $dbName = filter_input(INPUT_POST, 'dbname', FILTER_SANITIZE_STRING);
@@ -36,12 +37,10 @@ class configuracaoController extends Controller {
         $dbpassw = filter_input(INPUT_POST, 'dbpassw', FILTER_SANITIZE_STRING);
 
         $array_url = str_split($url);
-
         if ($array_url[count($array_url) - 1] == '/') {
             array_pop($array_url);
         }
         $url = implode('', $array_url);
-
         $result = $this->configurations->insertConfigurations(array(
             'url_site' => $url,
             'db_host' => $host,
@@ -52,7 +51,7 @@ class configuracaoController extends Controller {
         ));
 
         if ($result > 0) {
-            header('Location: /wcp/home');
+            header('Location:  ' . $settings['url']);
             die();
         } else {
             $this->loadTemplate('config', array());

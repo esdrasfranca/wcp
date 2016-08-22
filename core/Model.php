@@ -18,6 +18,11 @@ class Model {
         return -1;
     }
 
+    
+    /**
+     * Retorna todos os dados de uma tabela.
+     * @return mixed Retorna um array com os dados da consulta ou FALSE caso a tabela esteja vazia.
+     */
     protected function selectAll() {
         $sql = $this->dao->prepare_sql->select($this->tableName);
         return $this->dao->query($sql);

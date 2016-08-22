@@ -17,6 +17,7 @@ class Util {
     const UPLOAD_ERROR_NO_SUPORT = 1;
 
     public static function sanitizeString($str) {
+        $str = trim($str);
         $str = preg_replace('/[áàãâä]/ui', 'a', $str);
         $str = preg_replace('/[éèêë]/ui', 'e', $str);
         $str = preg_replace('/[íìîï]/ui', 'i', $str);

@@ -24,7 +24,7 @@ class DAO {
     /**
      * Executa uma instrução sql.
      * @param string $sql Instrução sql a ser executada.
-     * @return mixed Retorna um array caso a instrução sql retorno dados do banco ou FALSE caso nennhum dado reja retornado.
+     * @return mixed Retorna um array caso a instrução sql retorno dados do banco ou FALSE caso nennhum dado seja retornado.
      */
     public function query($sql) {
         if (!empty($sql)) {
