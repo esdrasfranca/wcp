@@ -9,7 +9,7 @@ global $settings;
         </div>
 
         <div class="content-menu">
-            <a class="fw-btn fw-btn-primary" href="#">Novo banner</a>
+            <a class="fw-btn fw-btn-primary" href="<?php echo $settings['url']?>/banner/novo">Add banner</a>
         </div>
 
         <table class="fw-table fw-table-border">

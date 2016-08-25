@@ -26,14 +26,9 @@ function verificaExtencaoUpload() {
                 preview.src = "";
             }
 
-
         } else {
             alert('Este formato de arquivo "' + nome + '" não é suportado para upload.');
             $(this).val('');
         }
     });
-}
-
-function exibeMiniaturaImagem() {
-    
 }

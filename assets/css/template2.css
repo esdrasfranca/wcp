@@ -65,6 +65,7 @@ input,textarea, select{font-size: 1em;}
 .fw-form-group[type="text"],
 .fw-form-group[type="email"],
 .fw-form-group[type="url"],
+.fw-form-group[type="number"],
 .fw-form-group[type="password"]{padding: 5px 10px; border: 1px solid #b6b9bb; outline: none; box-sizing: border-box; box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.3); }
 
 .fw-form-group-area{padding: 10px; box-sizing: border-box;}
@@ -73,6 +74,7 @@ input,textarea, select{font-size: 1em;}
 .fw-form-group[type="email"]:focus,
 .fw-form-group[type="password"]:focus,
 .fw-form-group[type="url"]:focus,
+.fw-form-group[type="number"]:focus,
 .fw-form-group-select:focus{border: 1px solid #19B5FE;}
 .fw-form-group-select{padding: 8px; border: 1px solid #b6b9bb; outline: none; box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.3);}
 
