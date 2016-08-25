@@ -19,8 +19,8 @@ global $settings;
 
             <div>
                 <label for="image" class="fw-form-group">Imagem</label>
-                <img id="view-image" src="<?php echo $settings['url'];?>/uploads/<?php echo $post[0]['post_image'];?>" height="60"/>
-                <input type="file" name="image" id="image" class="fw-form-group" value="<?php echo $settings['url']; ?> /uploads/<?php echo $post[0]['post_image']; ?>"/>
+                <img id="view-image" src="<?php echo $settings['url'];?>/assets/img/<?php echo $post[0]['post_image'];?>" height="60"/>
+                <input type="file" name="image" id="image" class="fw-form-group" value="<?php echo $settings['url']; ?>/assets/img/<?php echo $post[0]['post_image']; ?>"/>
             </div>
             <label for="categoria" class="fw-form-group">Categoria</label>
             <select id="categoria" name="categoria" required="true" class="fw-form-group fw-form-group-select">

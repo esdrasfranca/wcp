@@ -9,7 +9,7 @@ if (ENVIRONMENT == 'development') {
     $settings['dbname'] = 'schema_wcp';
     $settings['host'] = 'localhost';
     $settings['user'] = 'root';
-    $settings['passw'] = '';
+    $settings['passw'] = 'admin';
 } else {
     $settings['dbname'] = '';
     $settings['host'] = '';
@@ -18,4 +18,4 @@ if (ENVIRONMENT == 'development') {
 }
 $settings['root_dir'] = $_SERVER['DOCUMENT_ROOT'] . 'wcp';
 $settings['url'] = 'http://' . $_SERVER['HTTP_HOST'] . '/wcp';
-$settings['upload_dir'] = $settings['root_dir'] . '/uploads';
+$settings['upload_dir'] = $settings['root_dir'] . '/assets/img';

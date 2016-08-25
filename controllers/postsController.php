@@ -134,7 +134,7 @@ class postsController extends Controller
                 $var = $this->uploadFile();
                 $data['post_image'] = $var;
                 $return = $this->postModel->selectPostById($id);
-                Util::deleteFile($settings['root_dir'] . '/uploads/' . $return[0]['post_image']);
+                Util::deleteFile($settings['root_dir'] . '/assets/img/' . $return[0]['post_image']);
             }
 
             $where = array(
@@ -155,7 +155,7 @@ class postsController extends Controller
     {
         global $settings;
         if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
-            $up = new Upload();
+            $up = new File();
             $up->setName($_FILES['image']['name']);
             $up->setSize($_FILES['image']['size']);
             $up->setTmp_name($_FILES['image']['tmp_name']);

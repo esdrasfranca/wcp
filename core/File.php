@@ -11,7 +11,7 @@
  *
  * @author DIGIFUND
  */
-class Upload {
+class File {
 
     private $name;
     private $size;

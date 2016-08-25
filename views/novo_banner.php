@@ -20,7 +20,7 @@
                 <img id="view-image" src="" height="60" />
             </div>
             <br/>
-            <input type="submit" value="Salvar" name="enviar" class="fw-btn fw-btn-success"/>
+            <input type="submit" value="Salvar" name="salvar" class="fw-btn fw-btn-success"/>
             <a href="<?php echo $settings['url'];?>/banner" class="fw-link fw-link-danger">Cancelar</a>
         </form>
 

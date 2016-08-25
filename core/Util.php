@@ -49,12 +49,12 @@ class Util {
      * @param string $upload_dir Path do local para salvar os uploads. 
      * Caso não seja informado será criado um diretório uploads no local onde a 
      * classe Util se encontra.
-     * @param Upload $upload Objeto da classe Upload com os dados para upload.
+     * @param File $file Objeto da classe Upload com os dados para upload.
      * @return mixed Caso o upload seja realizado é retornado o caminho do arquivo. 
      * Caso a extenção não seja aceita retorna UPLOAD_ERROR_NO_SUPORT.
      * Caso haja algum erro no upload retorna UPLOAD_ERROR_FAIL.
      */
-    public static function prepareUpload(Upload $upload) {
+    public static function prepareUpload(File $file) {
         global $settings;
         $extencions = array("pdf", "doc", "docx", "ppt", "pptx", "mp4", "mp3", "jpg", "jpeg", "gif", "png");
 
@@ -62,7 +62,7 @@ class Util {
             mkdir($settings['upload_dir'], 0777);
         }
 
-        $array_name = explode('.', $upload->getName());
+        $array_name = explode('.', $file->getName());
         $name = $array_name[0];
         $ext = end($array_name);
 
@@ -72,7 +72,7 @@ class Util {
 
         $name = Util::sanitizeString($name) . '-' . time();
 
-        if (move_uploaded_file($upload->getTmp_name(), $settings['upload_dir'] . "/" . $name . "." . $ext)) {
+        if (move_uploaded_file($file->getTmp_name(), $settings['upload_dir'] . "/" . $name . "." . $ext)) {
             return $name . "." . $ext;
         } else {
             return Util::UPLOAD_ERROR_FAIL;
