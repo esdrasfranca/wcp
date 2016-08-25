@@ -16,7 +16,6 @@ if (ENVIRONMENT == 'development') {
     $settings['user'] = '';
     $settings['passw'] = '';
 }
-
 $settings['root_dir'] = $_SERVER['DOCUMENT_ROOT'] . 'wcp';
 $settings['url'] = 'http://' . $_SERVER['HTTP_HOST'] . '/wcp';
 $settings['upload_dir'] = $settings['root_dir'] . '/uploads';

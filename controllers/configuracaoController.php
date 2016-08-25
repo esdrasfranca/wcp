@@ -15,10 +15,10 @@ class configuracaoController extends Controller {
 
     private $configurations;
 
-//    public function __construct() {
-//        parent::__construct();
-//        $this->configurations = new Configuration();
-//    }
+    public function __construct() {
+        parent::__construct();
+        $this->configurations = new Configuration();
+    }
 
     public function index() {
         if (isset($_POST['enviar'])) {

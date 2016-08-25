@@ -10,6 +10,9 @@
     <a href="<?php echo $settings['url']; ?>/categorias">
         <li>Categorias</li>
     </a>
+    <a href="<?php echo $settings['url']; ?>/banner">
+        <li>Banner</li>
+    </a>
     <a href="<?php echo $settings['url']; ?>/configuracao" >
         <li class="fw-disable">Configurações</li>
     </a>

@@ -2,7 +2,7 @@
 global $settings;
 ?>
 
-<div class="content" style="width: 50%;">
+<div class="content">
 
     <div class="content-bar"></div>
     <div class="content-body">
@@ -16,7 +16,7 @@ global $settings;
             <input type="text" id="titulo" name="titulo" required="true" class="fw-form-group title"/>
 
             <label for="descricao" class="fw-form-group">Descrição</label>
-            <textarea id="descricao" name="descricao" class="fw-form-group fw-form-group-area" rows="5"></textarea>
+            <textarea id="descricao" name="descricao" class="fw-form-group fw-form-group-area" rows="3"></textarea>
 
             <label for="image" class="fw-form-group">Imagem</label>
             <input type="file" name="image" id="image" class="fw-form-group"/>

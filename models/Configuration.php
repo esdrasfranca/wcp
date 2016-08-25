@@ -24,7 +24,7 @@ class Configuration extends Model {
     }
 
     /**
-     * 
+     * Insere as configurações
      * @param array $data
      * @return int Retorna -1 caso o array $data esteja vazio.
      */
