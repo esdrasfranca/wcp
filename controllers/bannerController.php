@@ -58,6 +58,20 @@ class bannerController extends Controller
         }
     }
 
+    public function excluir($id)
+    {
+        global $settings;
+        if (!empty($id) && is_numeric($id)) {
+            $banner = $this->bannerModel->selectBannerById($id);
+            $return = $this->bannerModel->deleteBanner($id);
+            if ($return) {
+                Util::deleteFile($settings['upload_dir'] . "/" . $banner[0]['ban_image']);
+            }
+        }
+        header('Location: ' . $settings['url'] . '/banner');
+        die();
+    }
+
     private function adicionaBanner()
     {
 
@@ -100,15 +114,15 @@ class bannerController extends Controller
 
                 $file_name = Util::prepareUpload($file);
 
-                if($file_name != Util::UPLOAD_ERROR_FAIL && $file_name != Util::UPLOAD_ERROR_NO_SUPORT) {
+                if ($file_name != Util::UPLOAD_ERROR_FAIL && $file_name != Util::UPLOAD_ERROR_NO_SUPORT) {
                     $data['ban_image'] = $file_name;
                 }
             }
 
             $return = $this->bannerModel->updateBanner($data);
-            if($return) {
+            if ($return) {
                 $banner = $this->bannerModel->selectBannerById($_POST['id_banner']);
-                $this->bannerModel->updateBanner(array('ban_image'=>))
+                $this->bannerModel->updateBanner(array('ban_image' => $file_name));
                 Util::deleteFile($settings['upload_dir'] . '/' . $banner[0]['ban_image']);
             }
 

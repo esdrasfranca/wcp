@@ -51,12 +51,22 @@ class Banner extends Model
         ));
     }
 
-    public function updateBanner($data = array(), $where = array(), $cond='' ) {
+    /**
+     * @param array $data Dados a serem inseridos
+     * @param array $where Condição para a atualização dos dados
+     * @param string $cond Condição AND ou OR. Por padrão é AND.
+     * @return bool|int Retorna TRUE caso seja realizada o update. FALSE caso haja algum problema. Retorna -1 se o arrai data estiver vazio.
+     */
+    public function updateBanner($data = array(), $where = array(), $cond = '')
+    {
         if (count($data) > 0) {
             return $this->update($data, $where, $cond);
         } else {
             return -1;
         }
+    }
 
+    public function deleteBanner($id) {
+        return $this->delete(array('ban_id'=>$id));
     }
 }
