@@ -11,7 +11,7 @@ global $settings;
         <div class="fw-panel">
             <form method="POST">
                 <label for="nova-cat" class="fw-form-group">Nova categoria</label>
-                <input type="text" id="nova-cat" name="nova-cat" class="fw-form-group"/>
+                <input type="text" id="nova-cat" name="nova-cat" class="fw-form-group" required/>
                 <input type="submit" value="Salvar nova categoria" name="salvar" class="fw-btn fw-btn-success"/>
             </form>
         </div>
@@ -28,8 +28,7 @@ global $settings;
                     <tr>
                         <td><?php echo $categoria['cat_name']; ?></td>
                         <td>
-                            <a href="#">Editar</a> |
-                            <a href="#">Excluir</a>
+                            <a href="<?php echo $settings['url'];?>/categorias/excluir/<?php echo $categoria['cat_id'];?>">Excluir</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

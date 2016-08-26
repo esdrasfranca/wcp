@@ -11,43 +11,40 @@
  *
  * @author DIGIFUND
  */
-class configuracaoController extends Controller {
+class configuracaoController extends Controller
+{
 
-    private $configurations;
+    private $settingsModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
-        $this->configurations = new Settings();
+        $this->settingsModel = new Settings();
     }
 
-    public function index() {
-        if (isset($_POST['enviar'])) {
+    public function index()
+    {
+        $data = array();
+        if (isset($_POST['salvar'])) {
             $this->addConfiguration();
+        } else {
+            $data['setting'] = $this->settingsModel->selectAllSettings();
+            $this->loadTemplate('config', $data);
         }
-        $this->loadTemplate('config', array());
     }
 
-    private function addConfiguration() {
+    private function addConfiguration()
+    {
         global $settings;
         $url = filter_input(INPUT_POST, 'url_site', FILTER_SANITIZE_STRING);
-        $host = filter_input(INPUT_POST, 'dbhost', FILTER_SANITIZE_STRING);
-        $dbName = filter_input(INPUT_POST, 'dbname', FILTER_SANITIZE_STRING);
-        $dbuser = filter_input(INPUT_POST, 'dbuser', FILTER_SANITIZE_STRING);
-        $dbdrive = filter_input(INPUT_POST, 'dbdrive', FILTER_SANITIZE_STRING);
-        $dbpassw = filter_input(INPUT_POST, 'dbpassw', FILTER_SANITIZE_STRING);
-
         $array_url = str_split($url);
+
         if ($array_url[count($array_url) - 1] == '/') {
             array_pop($array_url);
         }
         $url = implode('', $array_url);
-        $result = $this->configurations->insertSettings(array(
-            'url_site' => $url,
-            'db_host' => $host,
-            'db_passw' => $dbpassw,
-            'db_user' => $dbuser,
-            'db_drive' => $dbdrive,
-            'db_name' => $dbName
+        $result = $this->settingsModel->insertSettings(array(
+            'url_site' => $url
         ));
 
         if ($result > 0) {
@@ -58,7 +55,8 @@ class configuracaoController extends Controller {
         }
     }
 
-    public function configure() {
+    public function configure()
+    {
         $this->loadTemplate('config', array());
     }
 

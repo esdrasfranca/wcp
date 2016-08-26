@@ -14,6 +14,7 @@
 abstract class Controller {
 
     protected $dao;
+    public $settings;
 
     public function __construct() {
         $this->dao = new DAO();

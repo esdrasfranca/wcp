@@ -12,11 +12,13 @@ require 'settings.php';
  *
  * @author Esdras
  */
-class Connection {
+class Connection
+{
 
     private static $conn = NULL;
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (self::$conn == NULL) {
             global $settings;
             $dsn = $settings['driver'] . ":host=" . $settings['host'] . ";dbname=" . $settings['dbname'];
