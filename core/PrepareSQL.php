@@ -11,7 +11,8 @@
  *
  * @author Esdras
  */
-class PrepareSQL {
+class PrepareSQL
+{
 
     /**
      * Prepara a instrução SQL UPDATE
@@ -19,9 +20,10 @@ class PrepareSQL {
      * @param array $data Array do tipo chave=>valor com os dados a serem atuaizados, onde a KEY é o nome da coluna e o VALUE o valor da coluna. Por padrão é vazio.
      * @param array $where Array do tipo chave=>valor com as condições para atualização, onde a KEY é o nome da coluna e o VALUE o valor da coluna. Por padrão é vazio.
      * @param string $cond Condição AND ou OR. Por padrão é AND.
-     * @return string Retorna a string SQL montada ou NULL caso nenhum nome para tabela seja passado.
+     * @return string|NULL Retorna a string SQL montada ou NULL caso nenhum nome para a tebela ou nenhum dado seja passado.
      */
-    public function update($table, $data = array(), $where = array(), $cond = 'AND') {
+    public function update($table, $data = array(), $where = array(), $cond = 'AND')
+    {
         if (empty($table) || count($data) == 0) {
             return NULL;
         }
@@ -56,7 +58,8 @@ class PrepareSQL {
      * @param array $data Array do tipo chave=>valor com os dados a serem inseridos, onde a KEY é o nome da coluna e o VALUE o valor da coluna. Por padrão é vazio.y
      * @return string Retorna a string SQL montada ou NULL caso nenhum nome para tabela seja passado ou o array de dados esteja vazio.
      */
-    public function insert($table, $data = array()) {
+    public function insert($table, $data = array())
+    {
 
         if (empty($table) || count($data) == 0) {
             return NULL;
@@ -89,7 +92,8 @@ class PrepareSQL {
      * @param string $cond Condição AND ou OR. Por padrão é AND.
      * @return string Retorna a string SQL montada ou NULL caso nenhum nome para tabela seja passado.
      */
-    public function select($table, $columns = array(), $where = array(), $cond = 'AND') {
+    public function select($table, $columns = array(), $where = array(), $cond = 'AND')
+    {
         if (empty($table)) {
             return NULL;
         }
@@ -125,7 +129,8 @@ class PrepareSQL {
      * @param type $cond Condição AND ou OR. Por padrão é AND.
      * @return string Retorna a string SQL montada ou NULL caso nenhum nome para tabela seja passado.
      */
-    public function delete($table, $where = array(), $cond = 'AND') {
+    public function delete($table, $where = array(), $cond = 'AND')
+    {
         if (empty($table)) {
             return NULL;
         }

@@ -22,16 +22,18 @@ class bannerController extends Controller
         $data = array();
 
         if (isset($_POST['salvar'])) {
-            $this->adicionaBanner();
+            $this->adicionarBanner();
         } else if (isset($_POST['atualizar'])) {
             $this->atualizarBanner();
+        } else {
+            $result = $this->bannerModel->selectAllBanners();
+            if ($result) {
+                $data['banners'] = $result;
+            }
+            $this->loadTemplate('banner', $data);
         }
 
-        $result = $this->bannerModel->selectAllBanners();
-        if ($result) {
-            $data['banners'] = $result;
-        }
-        $this->loadTemplate('banner', $data);
+
     }
 
     public function novo()
@@ -72,13 +74,15 @@ class bannerController extends Controller
         die();
     }
 
-    private function adicionaBanner()
+    private function adicionarBanner()
     {
 
         global $settings;
-        $position = filter_input(INPUT_POST, 'position', FILTER_SANITIZE_NUMBER_INT);
 
-        if (isset($_FILES['file'])) {
+        $data = array();
+        $data['ban_position'] = filter_input(INPUT_POST, 'position', FILTER_SANITIZE_NUMBER_INT);
+
+        if (isset($_FILES['file']) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
             $up = new File();
             $up->setErro($_FILES['file']['error']);
             $up->setName($_FILES['file']['name']);
@@ -86,13 +90,9 @@ class bannerController extends Controller
             $up->setTmp_name($_FILES['file']['tmp_name']);
             $up->setType($_FILES['file']['type']);
             $image = Util::prepareUpload($up);
+            $data['ban_image'] = $image;
         }
-
-        $this->bannerModel->insertBanner(array(
-            'ban_image' => $image,
-            'ban_position' => $position
-        ));
-
+        $this->bannerModel->insertBanner($data);
         header('Location: ' . $settings['url'] . '/banner');
     }
 

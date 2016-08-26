@@ -17,7 +17,7 @@ class configuracaoController extends Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->configurations = new Configuration();
+        $this->configurations = new Settings();
     }
 
     public function index() {
@@ -41,7 +41,7 @@ class configuracaoController extends Controller {
             array_pop($array_url);
         }
         $url = implode('', $array_url);
-        $result = $this->configurations->insertConfigurations(array(
+        $result = $this->configurations->insertSettings(array(
             'url_site' => $url,
             'db_host' => $host,
             'db_passw' => $dbpassw,

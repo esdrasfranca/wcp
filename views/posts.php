@@ -28,9 +28,9 @@
                         <td><?php echo $value['post_titulo']; ?></td>
                         <td><?php echo date('d/m/Y H:i:s', strtotime($value['post_data'])); ?></td>
                         <td>
-                            <a href="<?php echo $settings['url']; ?>/posts/excluir/<?php echo $value['post_id']; ?>">Excluir</a>
-                            |
                             <a href="<?php echo $settings['url']; ?>/posts/editar/<?php echo $value['post_id']; ?>">Editar</a>
+                            |
+                            <a href="<?php echo $settings['url']; ?>/posts/excluir/<?php echo $value['post_id']; ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

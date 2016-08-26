@@ -11,24 +11,23 @@
  *
  * @author DIGIFUND
  */
-class Configuration extends Model {
+class Settings extends Model {
 
     const TABLE_NAME = 'settings';
 
     public function __construct() {
-        parent::__construct(Configuration::TABLE_NAME);
+        parent::__construct(Settings::TABLE_NAME);
     }
 
-    public function selectAllConfigurations() {
+    public function selectAllSettings() {
         return $this->selectAll();
     }
 
     /**
-     * Insere as configurações
-     * @param array $data
-     * @return int Retorna -1 caso o array $data esteja vazio.
+     * @param array $data Parâmetros a serem inseridos na tebela
+     * @return bool|int Retorna TRUE caso a insersão seja realizada e FALSE caso haja alguma falha. Retorna -1 caso o array data esteja vazio.
      */
-    public function insertConfigurations($data = array()) {
+    public function insertSettings($data = array()) {
         if (is_array($data) && count($data) > 0) {
             return $this->insert($data);
         } else {
