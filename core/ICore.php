@@ -16,6 +16,9 @@ require_once "settings.php";
 class ICore
 {
 
+    /**
+     *
+     */
     public function run()
     {
         global $settings;
@@ -50,16 +53,30 @@ class ICore
 
             } else {
                 $currentController = "pagesController";
-                $currentcAtion = "_index";
-                if (isset($u[0]) && !empty($u[0])) {
-                    $param = $u;
+                if ($settings['dir'] == '/') {
+//                    $u = explode($settings['dir'], $_SERVER['REQUEST_URI']);
+//                    var_dump($u);exit;
+//                    array_shift($u);
+                } else {
+                    $u = explode($settings['dir'] . '/', $_SERVER['REQUEST_URI']);
                     array_shift($u);
+                    $u = explode('/', $u[0]);
+
+                    if (count($u) > 0 && !empty($u[0])) {
+                        $currentcAtion = $u[0];
+                    } else {
+                        $currentcAtion = 'index';
+                    }
+                    array_shift($u);
+
+                    if(count($u) > 0 && !empty($u[0])) {
+                        $param = $u;
+                    }
                 }
             }
 
             $controller = new $currentController(); //Instancia o controller
             call_user_func_array(array($controller, $currentcAtion), $param);
-
         }
     }
 }

@@ -24,7 +24,7 @@ class bannerController extends Controller
         if (isset($_POST['salvar'])) {
             $this->adicionarBanner();
         } else if (isset($_POST['atualizar'])) {
-            $this->atualizarBanner();
+            $this->atualizarBanner($_POST['id_banner']);
         } else {
             $result = $this->bannerModel->selectAllBanners();
             if ($result) {
@@ -55,7 +55,7 @@ class bannerController extends Controller
             $this->loadTemplateWPC('editar_banner', $data);
 
         } else {
-            header('Location: ' . $settings['url'] . '/wcp/banner');
+            header('Location: ' . $settings['url'] . '/banner');
             die();
         }
     }
@@ -96,7 +96,7 @@ class bannerController extends Controller
         header('Location: ' . $settings['url'] . '/banner');
     }
 
-    private function atualizarBanner()
+    private function atualizarBanner($id)
     {
         global $settings;
         if (isset($_POST['position'])) {
@@ -119,13 +119,9 @@ class bannerController extends Controller
                 }
             }
 
-            $return = $this->bannerModel->updateBanner($data);
-            if ($return) {
-                $banner = $this->bannerModel->selectBannerById($_POST['id_banner']);
-                $this->bannerModel->updateBanner(array('ban_image' => $file_name));
-                Util::deleteFile($settings['upload_dir'] . '/' . $banner[0]['ban_image']);
-            }
-
+            $banner = $this->bannerModel->selectBannerById($id);
+            Util::deleteFile($settings['upload_dir'] . '/' . $banner[0]['ban_image']);
+            $this->bannerModel->updateBanner($data, array('ban_id' => $id));
             header('Location: ' . $settings['url'] . '/banner');
             die();
 

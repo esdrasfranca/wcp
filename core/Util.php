@@ -13,8 +13,8 @@
  */
 class Util {
 
-    const UPLOAD_ERROR_FAIL = 0;
-    const UPLOAD_ERROR_NO_SUPORT = 1;
+    const UPLOAD_ERROR_FAIL = '0';
+    const UPLOAD_ERROR_NO_SUPORT = '1';
 
     public static function sanitizeString($str) {
         $str = trim($str);
