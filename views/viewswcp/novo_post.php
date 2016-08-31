@@ -10,7 +10,7 @@ global $settings;
             <h1>Novo Post</h1>
         </div>
 
-        <form method="post" action="<?php echo $settings['url']; ?>/posts" class="fw-form" enctype="multipart/form-data">
+        <form method="post" action="<?php echo $settings['url']; ?>/wcp/posts" class="fw-form" enctype="multipart/form-data">
 
             <label for="titulo" class="fw-form-group">Título do post</label>
             <input type="text" id="titulo" name="titulo" required="true" class="fw-form-group title"/>

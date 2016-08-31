@@ -29,13 +29,13 @@ class postsController extends Controller
         }
 
         $data['posts'] = $this->postModel->selectAllPosts();
-        $this->loadTemplate('posts', $data);
+        $this->loadTemplateWPC('posts', $data);
     }
 
     public function novo()
     {
         $data['categorias'] = $this->getCategorias();
-        $this->loadTemplate('novo_post', $data);
+        $this->loadTemplateWPC('novo_post', $data);
     }
 
     public function excluir($id)
@@ -47,13 +47,13 @@ class postsController extends Controller
 
             if ($result) {
                 Util::deleteFile($settings['upload_dir'] . '/' . $post[0]['post_image']);
-                header('Location: ' . $settings['url'] . '/posts');
+                header('Location: ' . $settings['url'] . '/wcp/posts');
                 die();
             } else {
                 $data['posts'] = $this->postModel->selectAllPosts();
                 $data['msg']['type'] = 'danger';
                 $data['msg']['message'] = 'Falha ao tentar excluir o post selecionado.';
-                $this->loadTemplate('posts', $data);
+                $this->loadTemplateWPC('posts', $data);
             }
         }
     }
@@ -70,13 +70,13 @@ class postsController extends Controller
             if ($result) {
                 $data['post'] = $result;
                 $data['categorias'] = $this->getCategorias();
-                $this->loadTemplate('editar_post', $data);
+                $this->loadTemplateWPC('editar_post', $data);
             } else {
-                header('Location: ' . $settings['url'] . '/posts');
+                header('Location: ' . $settings['url'] . '/wcp/posts');
                 die();
             }
         } else {
-            header('Location: ' . $settings['url'] . '/posts');
+            header('Location: ' . $settings['url'] . '/wcp/posts');
             die();
         }
     }
@@ -107,7 +107,7 @@ class postsController extends Controller
             ), array(
                 'post_id' => $result
             ));
-            header('Location: ' . $settings['url'] . '/posts');
+            header('Location: ' . $settings['url'] . '/wcp/posts');
             die();
         }
     }
@@ -143,7 +143,7 @@ class postsController extends Controller
             $result = $this->postModel->updatePost($data, $where);
 
             if ($result) {
-                header('Location: ' . $settings['url'] . '/posts');
+                header('Location: ' . $settings['url'] . '/wcp/posts');
                 die();
             } else {
 

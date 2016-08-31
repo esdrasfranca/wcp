@@ -29,7 +29,7 @@ class configuracaoController extends Controller
             $this->addConfiguration();
         } else {
             $data['setting'] = $this->settingsModel->selectAllSettings();
-            $this->loadTemplate('config', $data);
+            $this->loadTemplateWPC('config', $data);
         }
     }
 
@@ -48,16 +48,16 @@ class configuracaoController extends Controller
         ));
 
         if ($result > 0) {
-            header('Location:  ' . $settings['url']);
+            header('Location:  ' . $settings['url'] . '/wcp');
             die();
         } else {
-            $this->loadTemplate('config', array());
+            $this->loadTemplateWPC('config', array());
         }
     }
 
     public function configure()
     {
-        $this->loadTemplate('config', array());
+        $this->loadTemplateWPC('config', array());
     }
 
 }

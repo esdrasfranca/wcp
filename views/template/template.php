@@ -10,55 +10,47 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
 
-    <title>WCP - Work Control Panel</title>
-    <!--<link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/resources/bootstrap/css/bootstrap.min.css"/>-->
-    <link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/css/template.css"/>
-    <link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/css/oocss.css"/>
-    <script src="<?php echo $settings['url']; ?>/resources/ckeditor/ckeditor.js"></script>
-    <script src="<?php echo $settings['url']; ?>/assets/resources/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div class="container">
+        <title>WCP - Work Control Panel</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet"/>
+        <link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/css/template.css"/>
+        <script src="<?php echo $settings['url']; ?>/assets/js/jquery.js"></script>
+        <script src="<?php echo $settings['url']; ?>/resources/ckeditor/ckeditor.js"></script>
+        <script src="<?php echo $settings['url']; ?>/assets/js/jquery.js"></script>
+        <script src="<?php echo $settings['url']; ?>/assets/js/wcp.js"></script>
+    </head>
+    <body>
+        <div id="main-container">
 
-    <header class="main-header">
-        <section class="logo">
-            <a href="<?php echo $settings['url']; ?>"><h1>WCP</h1></a>
-        </section><!--logo-->
-        <nav class="menu-bar"></nav><!--menu-bar-->
-    </header><!--main-header-->
-
-    <aside class="main-sidebar">
-        <nav class="sidebar">
-            <?php include 'menu.php'; ?>
-        </nav><!--aside-->
-    </aside><!--main-sidebar-->
-
-    <div class="main-content">
-        <section class="content">
-            <div class="barra-superior"></div>
-            <div class="content-body">
-                <?php $this->loadViewInTemplate($viewName, $viewData); ?>
-            </div>
-        </section><!--content-->
-        <footer class="main-footer">footer</footer>
-    </div><!--main-content-->
-</div><!-- container-->
-
-<!-- SCRIPTS -->
-<script>
-    CKEDITOR.replace('post', {
-        filebrowserBrowseUrl: '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/ckfinder.html',
-        filebrowserImageBrowseUrl: '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/ckfinder.html?type=Images',
-        filebrowserFlashBrowseUrl: '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/ckfinder.html?type=Flash',
-        filebrowserUploadUrl: '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-        filebrowserImageUploadUrl: '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-        filebrowserFlashUploadUrl: '<?php echo $settings['url'];?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-    });
-</script>
+            <header id="main-header">
+                <section class="logo">
+                    <a href="<?php echo $settings['url']; ?>/wcp"><h1>WCP</h1></a>
+                </section><!--logo-->
+            </header>
+            <nav id="main-menu">
+                <?php include 'menu.php'; ?>
+            </nav>
+            <section id="main-content">
+                <?php $this->loadViewInWCP($viewName, $viewData); ?>
+                <footer id="main-footer"> <strong>WCP <?php echo date('Y');?> - Todos os direitos reservados.</strong></footer>
+            </section>
 
 
-</body>
+
+            <!-- SCRIPTS -->
+            <script>
+                CKEDITOR.replace('post', {
+                    filebrowserBrowseUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/ckfinder.html',
+                    filebrowserImageBrowseUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/ckfinder.html?type=Images',
+                    filebrowserFlashBrowseUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/ckfinder.html?type=Flash',
+                    filebrowserUploadUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                    filebrowserImageUploadUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                    filebrowserFlashUploadUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                });
+            </script>
+
+
+    </body>
 </html>

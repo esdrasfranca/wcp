@@ -33,7 +33,7 @@ class categoriasController extends Controller
         $data = array();
         $categorias = $this->categoriaModel->selectAllCategory();
         $data['categorias'] = $categorias;
-        $this->loadTemplate('categorias', $data);
+        $this->loadTemplateWPC('categorias', $data);
     }
 
     public function excluir($id)
@@ -41,7 +41,7 @@ class categoriasController extends Controller
         global $settings;
         if (!empty($id) && is_numeric($id)) {
             if ($this->categoriaModel->deleteCategory($id)) {
-                header('Location: ' . $settings['url'] . '/categorias');
+                header('Location: ' . $settings['url'] . '/wcp/categorias');
                 die();
             }
         }
@@ -53,7 +53,7 @@ class categoriasController extends Controller
         if (isset($_POST['nova-cat']) && $_POST['nova-cat'] != '') {
             $nome = strtoupper(filter_input(INPUT_POST, 'nova-cat', FILTER_SANITIZE_STRING));
             if ($this->categoriaModel->insertCategory(array('cat_name' => $nome))) {
-                header('Location: ' . $settings['url'] . '/categorias');
+                header('Location: ' . $settings['url'] . '/wcp/categorias');
                 die();
             }
         }

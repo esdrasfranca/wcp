@@ -17,7 +17,9 @@ abstract class Controller {
     public $settings;
 
     public function __construct() {
+        global $settings;
         $this->dao = new DAO();
+        $this->settings = $settings;
     }
 
     public abstract function index();
@@ -27,13 +29,22 @@ abstract class Controller {
         include 'views/' . $viewName . '.php';
     }
 
-    public function loadTemplate($viewName, $viewData = array()) {
-        include 'views/template/template2.php';
+    public function loadTemplateWPC($viewName, $viewData = array()) {
+        include 'views/template/template.php';
+    }
+
+    public function loadTemplateSITE($viewName, $viewData = array()) {
+        include 'views/template_site.php';
     }
 
     public function loadViewInTemplate($viewName, $viewData = array()) {
         extract($viewData);
         include 'views/' . $viewName . '.php';
+    }
+
+    public function loadViewInWCP($viewName, $viewData = array()) {
+        extract($viewData);
+        include 'views/viewswcp/' . $viewName . '.php';
     }
 
 }

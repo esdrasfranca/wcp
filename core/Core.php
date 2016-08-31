@@ -21,7 +21,7 @@ class Core
         $param = array();
 
         if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] != '') {
-            $url = explode("wcp", $_SERVER['REQUEST_URI']);
+            $url = explode("souefra", $_SERVER['REQUEST_URI']);
             array_shift($url);
             $url = explode('/', $url[0]);
             array_shift($url);
@@ -47,11 +47,16 @@ class Core
                 $param = $url;
                 array_shift($url);
             }
-
-
         }
 
-        $controller = new $currentController(); //Instancia o controller
+        if (file_exists("controllers/" . $currentController . ".php")) {
+            $controller = new $currentController(); //Instancia o controller
+        } else {
+            $controller = new pagesController();
+            $currentcAtion = "_index";
+            $page = explode("Controller", $currentController);
+            $param = array($page[0]);
+        }
         call_user_func_array(array($controller, $currentcAtion), $param);
 
     }

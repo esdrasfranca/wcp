@@ -7,7 +7,7 @@
             <h1>Posts</h1>
         </div>
         <div class="content-menu">
-            <a href="<?php echo $settings['url']; ?>/posts/novo" class="fw-btn fw-btn-primary">Novo post</a>
+            <a href="<?php echo $settings['url']; ?>/wcp/posts/novo" class="fw-btn fw-btn-primary">Novo post</a>
         </div>
 
         <table class="fw-table fw-table-border">
@@ -28,9 +28,9 @@
                         <td><?php echo $value['post_titulo']; ?></td>
                         <td><?php echo date('d/m/Y H:i:s', strtotime($value['post_data'])); ?></td>
                         <td>
-                            <a href="<?php echo $settings['url']; ?>/posts/editar/<?php echo $value['post_id']; ?>">Editar</a>
+                            <a href="<?php echo $settings['url']; ?>/wcp/posts/editar/<?php echo $value['post_id']; ?>">Editar</a>
                             |
-                            <a href="<?php echo $settings['url']; ?>/posts/excluir/<?php echo $value['post_id']; ?>">Excluir</a>
+                            <a href="<?php echo $settings['url']; ?>/wcp/posts/excluir/<?php echo $value['post_id']; ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

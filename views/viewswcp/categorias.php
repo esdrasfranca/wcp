@@ -28,7 +28,7 @@ global $settings;
                     <tr>
                         <td><?php echo $categoria['cat_name']; ?></td>
                         <td>
-                            <a href="<?php echo $settings['url'];?>/categorias/excluir/<?php echo $categoria['cat_id'];?>">Excluir</a>
+                            <a href="<?php echo $settings['url'];?>/wcp/categorias/excluir/<?php echo $categoria['cat_id'];?>">Excluir</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

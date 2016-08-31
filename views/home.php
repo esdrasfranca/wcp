@@ -1,6 +1,3 @@
 <?php
-global $settings;
+var_dump($this->settings);
 ?>
-
-
-

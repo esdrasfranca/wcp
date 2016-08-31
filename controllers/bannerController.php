@@ -30,7 +30,7 @@ class bannerController extends Controller
             if ($result) {
                 $data['banners'] = $result;
             }
-            $this->loadTemplate('banner', $data);
+            $this->loadTemplateWPC('banner', $data);
         }
 
 
@@ -38,7 +38,7 @@ class bannerController extends Controller
 
     public function novo()
     {
-        $this->loadTemplate('novo_banner', array());
+        $this->loadTemplateWPC('novo_banner', array());
     }
 
     public function editar($id)
@@ -52,10 +52,10 @@ class bannerController extends Controller
                 $data['banner'] = $banner;
             }
 
-            $this->loadTemplate('editar_banner', $data);
+            $this->loadTemplateWPC('editar_banner', $data);
 
         } else {
-            header('Location: ' . $settings['url'] . '/banner');
+            header('Location: ' . $settings['url'] . '/wcp/banner');
             die();
         }
     }
@@ -70,7 +70,7 @@ class bannerController extends Controller
                 Util::deleteFile($settings['upload_dir'] . "/" . $banner[0]['ban_image']);
             }
         }
-        header('Location: ' . $settings['url'] . '/banner');
+        header('Location: ' . $settings['url'] . '/wcp/banner');
         die();
     }
 
@@ -93,7 +93,7 @@ class bannerController extends Controller
             $data['ban_image'] = $image;
         }
         $this->bannerModel->insertBanner($data);
-        header('Location: ' . $settings['url'] . '/banner');
+        header('Location: ' . $settings['url'] . '/wcp/banner');
     }
 
     private function atualizarBanner()
@@ -126,7 +126,7 @@ class bannerController extends Controller
                 Util::deleteFile($settings['upload_dir'] . '/' . $banner[0]['ban_image']);
             }
 
-            header('Location: ' . $settings['url'] . '/banner');
+            header('Location: ' . $settings['url'] . '/wcp/banner');
             die();
 
         }
