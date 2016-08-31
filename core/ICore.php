@@ -25,13 +25,17 @@ class ICore
         $currentcAtion = '';
         $currentController = '';
         $param = array();
+//        var_dump($settings);
+//        exit;
 
         if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] != '') {
 
             if (strpos($_SERVER['REQUEST_URI'], 'wcp')) {
                 $u = explode("/wcp/", $_SERVER['REQUEST_URI']);
                 array_shift($u);
-                $u = explode("/", $u[0]);
+                if (!empty($u[0])) {
+                    $u = explode("/", $u[0]);
+                }
 
                 if (isset($u[0]) && !empty($u[0])) {
                     $currentController = $u[0] . 'Controller';
@@ -50,7 +54,8 @@ class ICore
                 if (isset($u[0]) && count($u) > 0) {
                     $param = $u;
                 }
-
+                echo $currentController . '::'. $currentcAtion;
+//                var_dump($u);exit;
             } else {
                 $currentController = "pagesController";
                 if ($settings['dir'] == '/') {
@@ -69,12 +74,11 @@ class ICore
                     }
                     array_shift($u);
 
-                    if(count($u) > 0 && !empty($u[0])) {
+                    if (count($u) > 0 && !empty($u[0])) {
                         $param = $u;
                     }
                 }
             }
-
             $controller = new $currentController(); //Instancia o controller
             call_user_func_array(array($controller, $currentcAtion), $param);
         }

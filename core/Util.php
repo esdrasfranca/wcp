@@ -58,8 +58,8 @@ class Util {
         global $settings;
         $extencions = array("pdf", "doc", "docx", "ppt", "pptx", "mp4", "mp3", "jpg", "jpeg", "gif", "png");
 
-        if (!file_exists($settings['upload_dir'])) {
-            mkdir($settings['upload_dir'], 0777);
+        if (!file_exists($settings['upload_path'])) {
+            mkdir($settings['upload_path'], 0777);
         }
 
         $array_name = explode('.', $file->getName());
@@ -72,7 +72,7 @@ class Util {
 
         $name = Util::sanitizeString($name) . '-' . time();
 
-        if (move_uploaded_file($file->getTmp_name(), $settings['upload_dir'] . "/" . $name . "." . $ext)) {
+        if (move_uploaded_file($file->getTmp_name(), $settings['upload_path'] . "/" . $name . "." . $ext)) {
             return $name . "." . $ext;
         } else {
             return Util::UPLOAD_ERROR_FAIL;

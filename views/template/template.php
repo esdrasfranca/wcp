@@ -15,18 +15,17 @@ and open the template in the editor.
 
         <title>WCP - Work Control Panel</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet"/>
-        <link rel="stylesheet" href="<?php echo $settings['url']; ?>/assets/css/template.css"/>
-        <script src="<?php echo $settings['url']; ?>/assets/js/jquery.js"></script>
-        <script src="<?php echo $settings['url']; ?>/resources/ckeditor/ckeditor.js"></script>
-        <script src="<?php echo $settings['url']; ?>/assets/js/jquery.js"></script>
-        <script src="<?php echo $settings['url']; ?>/assets/js/wcp.js"></script>
+        <link rel="stylesheet" href="<?php echo $settings['url_base']; ?>/assets/css/template.css"/>
+        <script src="<?php echo $settings['url_base']; ?>/assets/js/jquery.js"></script>
+        <script src="<?php echo $settings['url_base']; ?>/resources/ckeditor/ckeditor.js"></script>
+        <script src="<?php echo $settings['url_base']; ?>/assets/js/jquery.js"></script>
+        <script src="<?php echo $settings['url_base']; ?>/assets/js/wcp.js"></script>
     </head>
     <body>
         <div id="main-container">
-
             <header id="main-header">
                 <section class="logo">
-                    <a href="<?php echo $settings['url']; ?>"><h1>WCP</h1></a>
+                    <a href="<?php echo $settings['url_wcp']; ?>"><h1>WCP</h1></a>
                 </section><!--logo-->
             </header>
             <nav id="main-menu">
@@ -42,12 +41,12 @@ and open the template in the editor.
             <!-- SCRIPTS -->
             <script>
                 CKEDITOR.replace('post', {
-                    filebrowserBrowseUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/ckfinder.html',
-                    filebrowserImageBrowseUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/ckfinder.html?type=Images',
-                    filebrowserFlashBrowseUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/ckfinder.html?type=Flash',
-                    filebrowserUploadUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                    filebrowserImageUploadUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-                    filebrowserFlashUploadUrl: '<?php echo $settings['url']; ?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                    filebrowserBrowseUrl: '<?php echo $settings['url_base']; ?>/resources/ckeditor/ckfinder/ckfinder.html',
+                    filebrowserImageBrowseUrl: '<?php echo $settings['url_base']; ?>/resources/ckeditor/ckfinder/ckfinder.html?type=Images',
+                    filebrowserFlashBrowseUrl: '<?php echo $settings['url_base']; ?>/resources/ckeditor/ckfinder/ckfinder.html?type=Flash',
+                    filebrowserUploadUrl: '<?php echo $settings['url_base']; ?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                    filebrowserImageUploadUrl: '<?php echo $settings['url_base']; ?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                    filebrowserFlashUploadUrl: '<?php echo $settings['url_base']; ?>/resources/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
                 });
             </script>
 

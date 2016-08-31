@@ -55,7 +55,7 @@ class bannerController extends Controller
             $this->loadTemplateWPC('editar_banner', $data);
 
         } else {
-            header('Location: ' . $settings['url'] . '/banner');
+            header('Location: ' . $settings['url_wcp'] . '/banner');
             die();
         }
     }
@@ -67,10 +67,10 @@ class bannerController extends Controller
             $banner = $this->bannerModel->selectBannerById($id);
             $return = $this->bannerModel->deleteBanner($id);
             if ($return) {
-                Util::deleteFile($settings['upload_dir'] . "/" . $banner[0]['ban_image']);
+                Util::deleteFile($settings['upload_path'] . "/" . $banner[0]['ban_image']);
             }
         }
-        header('Location: ' . $settings['url'] . '/banner');
+        header('Location: ' . $settings['url_wcp'] . '/banner');
         die();
     }
 
@@ -93,7 +93,7 @@ class bannerController extends Controller
             $data['ban_image'] = $image;
         }
         $this->bannerModel->insertBanner($data);
-        header('Location: ' . $settings['url'] . '/banner');
+        header('Location: ' . $settings['url_wcp'] . '/banner');
     }
 
     private function atualizarBanner($id)
@@ -120,9 +120,9 @@ class bannerController extends Controller
             }
 
             $banner = $this->bannerModel->selectBannerById($id);
-            Util::deleteFile($settings['upload_dir'] . '/' . $banner[0]['ban_image']);
+            Util::deleteFile($settings['upload_path'] . '/' . $banner[0]['ban_image']);
             $this->bannerModel->updateBanner($data, array('ban_id' => $id));
-            header('Location: ' . $settings['url'] . '/banner');
+            header('Location: ' . $settings['url_wcp'] . '/banner');
             die();
 
         }

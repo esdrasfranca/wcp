@@ -2,20 +2,20 @@
     <a <?php echo (empty($settings['url_site']) ? 'href="#"' : 'href="' . $settings['url_site']) . '" target="_blank"'; ?>>
         <li>Voltar para o Site</li>
     </a>
-    <a href="<?php echo $settings['url']; ?>/usuario">
+    <a href="<?php echo $settings['url_wcp']; ?>/usuario">
         <li>Usuários</li>
     </a>
 
-    <a href="<?php echo $settings['url']; ?>/posts">
+    <a href="<?php echo $settings['url_wcp']; ?>/posts">
         <li>Posts</li>
     </a>
-    <a href="<?php echo $settings['url']; ?>/categorias">
+    <a href="<?php echo $settings['url_wcp']; ?>/categorias">
         <li>Categorias</li>
     </a>
-    <a href="<?php echo $settings['url']; ?>/banner">
+    <a href="<?php echo $settings['url_wcp']; ?>/banner">
         <li>Banner</li>
     </a>
-    <a href="<?php echo $settings['url']; ?>/configuracao">
+    <a href="<?php echo $settings['url_wcp']; ?>/configuracao">
         <li>Configurações</li>
     </a>
 </ul>

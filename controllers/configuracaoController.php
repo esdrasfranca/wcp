@@ -48,7 +48,7 @@ class configuracaoController extends Controller
         ));
 
         if ($result > 0) {
-            header('Location:  ' . $settings['url']);
+            header('Location:  ' . $settings['url_wcp']);
             die();
         } else {
             $this->loadTemplateWPC('config', array());

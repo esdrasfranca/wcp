@@ -16,9 +16,8 @@ if (ENVIRONMENT == 'development') {
     $settings['user'] = 'root';
     $settings['passw'] = '';
 }
-//Nome do diretório raiz ou "/" caso estaja no PUBLIC_HTML.
-$settings['dir'] = 'wcp';
-$settings['root_dir'] = ($settings['dir'] == '/' ? substr($_SERVER['DOCUMENT_ROOT'] , 0, -1) : $_SERVER['DOCUMENT_ROOT'] . $settings['dir']);
-$settings['url'] = ($settings['dir'] == '/' ? 'http://' . $_SERVER['HTTP_HOST'] : 'http://' . $_SERVER['HTTP_HOST'] . '/' . $settings['dir']);
-$settings['upload_dir'] = (empty($settings['dir']) ? $settings['root_dir'] . 'assets/img' : $settings['root_dir'] . '/assets/img');
-$settings['url_site'] = "";
+
+$settings['url_base'] = "http://". $_SERVER['HTTP_HOST'] . '/wcp';
+$settings['url_wcp'] = $settings['url_base'];
+$settings['root_path'] = $_SERVER['DOCUMENT_ROOT'] . 'wcp';
+$settings['upload_path'] = $settings['root_path'] . '/assets/img';
