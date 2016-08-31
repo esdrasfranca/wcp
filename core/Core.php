@@ -21,7 +21,7 @@ class Core
         $param = array();
 
         if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] != '') {
-            $url = explode("souefra", $_SERVER['REQUEST_URI']);
+            $url = explode("wcp", $_SERVER['REQUEST_URI']);
             array_shift($url);
             $url = explode('/', $url[0]);
             array_shift($url);

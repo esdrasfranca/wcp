@@ -26,6 +26,6 @@ $settings['url'] = (empty($settings['dir']) ? 'http://' . $_SERVER['HTTP_HOST'] 
 $settings['upload_dir'] = $settings['root_dir'] . '/assets/img';
 
 /*CONFIGURAÇÕES SITE*/
-$settings['dir'] = "souefra";
+$settings['dir'] = "wcp";
 $settings['url_site'] = $confiSite['url_site'];
 
