@@ -70,7 +70,7 @@ class bannerController extends Controller
                 Util::deleteFile($settings['upload_dir'] . "/" . $banner[0]['ban_image']);
             }
         }
-        header('Location: ' . $settings['url'] . '/wcp/banner');
+        header('Location: ' . $settings['url'] . '/banner');
         die();
     }
 
@@ -93,7 +93,7 @@ class bannerController extends Controller
             $data['ban_image'] = $image;
         }
         $this->bannerModel->insertBanner($data);
-        header('Location: ' . $settings['url'] . '/wcp/banner');
+        header('Location: ' . $settings['url'] . '/banner');
     }
 
     private function atualizarBanner()
@@ -126,7 +126,7 @@ class bannerController extends Controller
                 Util::deleteFile($settings['upload_dir'] . '/' . $banner[0]['ban_image']);
             }
 
-            header('Location: ' . $settings['url'] . '/wcp/banner');
+            header('Location: ' . $settings['url'] . '/banner');
             die();
 
         }

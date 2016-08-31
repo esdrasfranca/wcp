@@ -15,7 +15,7 @@ class wcpController extends Controller
             $this->loadTemplateWPC("home", array());
 
         } else {
-            header('Location: ' . $settings['url'] . '/wcp/login');
+            header('Location: ' . $settings['url'] . '/login');
             die();
         }
     }

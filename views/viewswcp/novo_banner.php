@@ -7,7 +7,7 @@
             <h1>Novo Banner</h1>
         </div>
 
-        <form action="<?php echo $settings['url']?>/wcp/banner" class="fw-form" method="post" enctype="multipart/form-data">
+        <form action="<?php echo $settings['url']?>/banner" class="fw-form" method="post" enctype="multipart/form-data">
             <label for="position" class="fw-form-group">Ordem de exibição do banner</label>
             <input type="number" min="1" value="1" name="position" id="position" class="fw-form-group" style="width: 50%;" required/>
 
@@ -21,7 +21,7 @@
             </div>
             <br/>
             <input type="submit" value="Salvar" name="salvar" class="fw-btn fw-btn-success"/>
-            <a href="<?php echo $settings['url'];?>/wcp/banner" class="fw-link fw-link-danger">Cancelar</a>
+            <a href="<?php echo $settings['url'];?>/banner" class="fw-link fw-link-danger">Cancelar</a>
         </form>
 
     </div>

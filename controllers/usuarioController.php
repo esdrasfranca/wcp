@@ -62,7 +62,7 @@ class usuarioController extends Controller {
                 if ($this->usuarioModel->insertUser($data)) {
                     $data['msg']['type'] = 'success';
                     $data['msg'][] = 'Usuário cadastrado com sucesso';
-                    header('Location: ' . $settings['url'] . '/wcp/usuario');
+                    header('Location: ' . $settings['url'] . '/usuario');
                 } else {
                     $data['msg']['type'] = 'erro';
                     $data['msg'][] = 'Falha ao tentar cadastrar o novo usuário';
@@ -83,7 +83,7 @@ class usuarioController extends Controller {
             if ($result) {
                 $data['msg']['type'] = 'success';
                 $data['msg'][] = 'Usuário excluido com sucesso.';
-                header('Location: ' . $settings['url'] . '/wcp/usuario');
+                header('Location: ' . $settings['url'] . '/usuario');
             } else {
                 $data['msg']['type'] = 'erro';
                 $data['msg'][] = 'Falha ao tentar cadastrar o novo usuário';
@@ -117,7 +117,7 @@ class usuarioController extends Controller {
 
                 $result = $this->usuarioModel->updateUser($data, $where, '');
                 if ($result) {
-                    header('Location: ' . $settings['url'] . '/wcp/usuario');
+                    header('Location: ' . $settings['url'] . '/usuario');
                     die();
                 } else {
                     $data['usuario'] = $this->usuarioModel->selectUser($id);
@@ -135,10 +135,10 @@ class usuarioController extends Controller {
                 $data['usuario'] = $result;
                 $this->loadTemplateWPC('editar_usuario', $data);
             } else {
-                header('Location: ' . $settings['url'] . '/wcp/usuario');
+                header('Location: ' . $settings['url'] . '/usuario');
             }
         } else {
-            header('Location: ' . $settings['url'] . '/wcp/usuario');
+            header('Location: ' . $settings['url'] . '/usuario');
         }
     }
 

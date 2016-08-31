@@ -47,7 +47,7 @@ class postsController extends Controller
 
             if ($result) {
                 Util::deleteFile($settings['upload_dir'] . '/' . $post[0]['post_image']);
-                header('Location: ' . $settings['url'] . '/wcp/posts');
+                header('Location: ' . $settings['url'] . '/posts');
                 die();
             } else {
                 $data['posts'] = $this->postModel->selectAllPosts();
@@ -72,11 +72,11 @@ class postsController extends Controller
                 $data['categorias'] = $this->getCategorias();
                 $this->loadTemplateWPC('editar_post', $data);
             } else {
-                header('Location: ' . $settings['url'] . '/wcp/posts');
+                header('Location: ' . $settings['url'] . '/posts');
                 die();
             }
         } else {
-            header('Location: ' . $settings['url'] . '/wcp/posts');
+            header('Location: ' . $settings['url'] . '/posts');
             die();
         }
     }
@@ -107,7 +107,7 @@ class postsController extends Controller
             ), array(
                 'post_id' => $result
             ));
-            header('Location: ' . $settings['url'] . '/wcp/posts');
+            header('Location: ' . $settings['url'] . '/posts');
             die();
         }
     }
@@ -143,7 +143,7 @@ class postsController extends Controller
             $result = $this->postModel->updatePost($data, $where);
 
             if ($result) {
-                header('Location: ' . $settings['url'] . '/wcp/posts');
+                header('Location: ' . $settings['url'] . '/posts');
                 die();
             } else {
 

@@ -26,7 +26,7 @@ and open the template in the editor.
 
             <header id="main-header">
                 <section class="logo">
-                    <a href="<?php echo $settings['url']; ?>/wcp"><h1>WCP</h1></a>
+                    <a href="<?php echo $settings['url']; ?>"><h1>WCP</h1></a>
                 </section><!--logo-->
             </header>
             <nav id="main-menu">

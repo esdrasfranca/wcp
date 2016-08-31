@@ -50,7 +50,7 @@ class ICore
 
             } else {
                 $currentController = "pagesController";
-                $currentcAtion = "index";
+                $currentcAtion = "_index";
                 if (isset($u[0]) && !empty($u[0])) {
                     $param = $u;
                     array_shift($u);
