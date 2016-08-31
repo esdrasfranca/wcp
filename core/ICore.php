@@ -24,29 +24,27 @@ class ICore
         $param = array();
 
         if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] != '') {
-            $u = explode("souefra", $_SERVER['REQUEST_URI']);
-            array_shift($u);
-            $u = explode("/", $u[0]);
-            array_shift($u);
 
-            if (isset($u[0]) && !empty($u[0]) && $u[0] == 'wcp') {
+            if (strpos($_SERVER['REQUEST_URI'], 'wcp')) {
+                $u = explode("/wcp/", $_SERVER['REQUEST_URI']);
+                array_shift($u);
+                $u = explode("/", $u[0]);
+
+                if (isset($u[0]) && !empty($u[0])) {
+                    $currentController = $u[0] . 'Controller';
+                } else {
+                    $currentController = 'wcpController';
+                }
                 array_shift($u);
 
                 if (isset($u[0]) && !empty($u[0])) {
-                    $currentController = $u[0] . "Controller";
-                    array_shift($u);
-                } else {
-                    $currentController = "wcpController";
-                }
-
-                if (isset($u[0]) && !empty($u[0])) {
                     $currentcAtion = $u[0];
-                    array_shift($u);
                 } else {
                     $currentcAtion = 'index';
                 }
+                array_shift($u);
 
-                if(isset($u[0]) && count($u) > 0) {
+                if (isset($u[0]) && count($u) > 0) {
                     $param = $u;
                 }
 
@@ -57,7 +55,6 @@ class ICore
                     $param = $u;
                     array_shift($u);
                 }
-
             }
 
             $controller = new $currentController(); //Instancia o controller
