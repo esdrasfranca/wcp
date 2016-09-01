@@ -46,7 +46,7 @@ class postsController extends Controller
             $result = $this->postModel->deletePost(array('post_id' => $id));
 
             if ($result) {
-                Util::deleteFile($settings['upload_dir'] . '/' . $post[0]['post_image']);
+                Util::deleteFile($settings['upload_path'] . '/' . $post[0]['post_image']);
                 header('Location: ' . $settings['url_wcp'] . '/posts');
                 die();
             } else {
@@ -134,7 +134,7 @@ class postsController extends Controller
                 $var = $this->uploadFile();
                 $data['post_image'] = $var;
                 $return = $this->postModel->selectPostById($id);
-                Util::deleteFile($settings['root_dir'] . '/assets/img/' . $return[0]['post_image']);
+                Util::deleteFile($settings['root_path'] . '/assets/img/' . $return[0]['post_image']);
             }
 
             $where = array(
