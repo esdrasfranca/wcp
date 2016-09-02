@@ -35,4 +35,8 @@ class Users extends Model {
         return $this->update($data, $where, $cond);
     }
 
+    public function getUserByEmailAndPassw($email, $senha) {
+        return $this->select(array('user_email', 'user_name'), array('user_email'=>$email, 'user_passw'=>$senha), 'AND');
+    }
+
 }

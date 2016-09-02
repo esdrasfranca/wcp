@@ -16,12 +16,13 @@
             box-sizing: border-box;
         }
 
-        h1{
+        h1 {
             text-align: center;
             color: #fff;
             margin-top: 130px;
             font-size: 3em;
         }
+
 
         .login {
             width: 100%;
@@ -30,14 +31,21 @@
             margin: 30px auto 0 auto;
             box-sizing: border-box;
             padding: 20px;
-            box-shadow: 1px 1px 3px 0 rgba(0,0,0,.5);
+            box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .5);
         }
 
-        .login p{
+        .login p {
             margin: 0 0 20px 0;
             font-size: 1.3em;
             text-align: center;
             font-weight: bold;
+        }
+
+        .erro-msg{
+            margin: 20px 0 !important;
+            color: red;
+            text-align: left!important;
+            font-size: .8em!important;
         }
 
         .login .in-text {
@@ -50,12 +58,11 @@
             transition: .5s;
         }
 
-
-        .in-text:focus{
+        .in-text:focus {
             border-color: #2980B9;
         }
 
-        .login .in-btn{
+        .login .in-btn {
             width: 100%;
             border: 1px solid #ccc;
             padding: 15px;
@@ -66,7 +73,7 @@
             font-size: 1.1em;
         }
 
-        .login .in-btn:hover{
+        .login .in-btn:hover {
             background-color: #273a4e;
         }
 
@@ -80,6 +87,10 @@
 <div class="login">
 
     <p>Faça o login</p>
+
+    <?php if (isset($erro_login)): ?>
+        <p class="erro-msg">Usuário e/ou senha inválidos.</p>
+    <?php endif; ?>
     <form action="" method="post">
         <input class="in-text" type="email" name="email" id="email" placeholder="Email" required/>
         <input class="in-text" type="password" name="senha" id="senha" placeholder="Senha" required/>

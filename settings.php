@@ -8,7 +8,7 @@ if (ENVIRONMENT == 'development') {
     $settings['dbname'] = 'schema_wcp';
     $settings['host'] = 'localhost';
     $settings['user'] = 'root';
-    $settings['passw'] = 'admin';
+    $settings['passw'] = '';
 } else {
     $settings['driver'] = 'mysql';
     $settings['dbname'] = 'schema_wcp';
