@@ -29,7 +29,16 @@ abstract class Controller {
         include 'views/' . $viewName . '.php';
     }
 
-    public function loadTemplateWPC($viewName, $viewData = array()) {
+    public function loadViewInWCP($viewName, $viewData = array()) {
+        extract($viewData);
+        include 'views/viewswcp/' . $viewName . '.php';
+    }
+
+//    public function loadTemplateWCPLogin($viewName, $viewData = array()) {
+//        include 'views/template/login-tpl.php';
+//    }
+
+    public function loadTemplateWCP($viewName, $viewData = array()) {
         include 'views/template/template.php';
     }
 
@@ -37,14 +46,6 @@ abstract class Controller {
         include 'views/template_site.php';
     }
 
-    public function loadViewInTemplate($viewName, $viewData = array()) {
-        extract($viewData);
-        include 'views/' . $viewName . '.php';
-    }
 
-    public function loadViewInWCP($viewName, $viewData = array()) {
-        extract($viewData);
-        include 'views/viewswcp/' . $viewName . '.php';
-    }
 
 }

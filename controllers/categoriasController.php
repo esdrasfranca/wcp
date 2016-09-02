@@ -33,7 +33,7 @@ class categoriasController extends Controller
         $data = array();
         $categorias = $this->categoriaModel->selectAllCategory();
         $data['categorias'] = $categorias;
-        $this->loadTemplateWPC('categorias', $data);
+        $this->loadTemplateWCP('categorias', $data);
     }
 
     public function excluir($id)

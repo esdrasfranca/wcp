@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #3498db;
+        background-color: #3498db;
             font-family: Arial, Sans-Serif;
         }
 
@@ -22,7 +22,6 @@
             margin-top: 130px;
             font-size: 3em;
         }
-
 
         .login {
             width: 100%;
@@ -41,11 +40,11 @@
             font-weight: bold;
         }
 
-        .erro-msg{
+        .erro-msg {
             margin: 20px 0 !important;
             color: red;
-            text-align: left!important;
-            font-size: .8em!important;
+            text-align: left !important;
+            font-size: .8em !important;
         }
 
         .login .in-text {
@@ -88,8 +87,8 @@
 
     <p>Faça o login</p>
 
-    <?php if (isset($erro_login)): ?>
-        <p class="erro-msg">Usuário e/ou senha inválidos.</p>
+    <?php if (isset($_SESSION['erro_login'])): ?>
+        <p class="erro-msg"><?php echo $_SESSION['erro_login'];?></p>
     <?php endif; ?>
     <form action="" method="post">
         <input class="in-text" type="email" name="email" id="email" placeholder="Email" required/>
@@ -97,5 +96,8 @@
         <input class="in-btn" type="submit" name="logar" value="Logar"/>
     </form>
 </div>
+<p style="color: #34495E; text-align: center; font-size: .8em; margin-top: 50px; font-weight: bold;">WCP - Work Control
+    Panel</p>
+
 </body>
 </html>

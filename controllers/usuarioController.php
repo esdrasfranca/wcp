@@ -11,44 +11,51 @@
  *
  * @author Esdras
  */
-class usuarioController extends Controller {
+class usuarioController extends Controller
+{
 
     private $usuarioModel;
     private $usuarios;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->usuarioModel = new Users();
         $this->usuarios = array();
     }
 
-    private function getUsuarios() {
+    private function getUsuarios()
+    {
         $result = $this->usuarioModel->selectAllUsers();
         if ($result) {
             return $result;
         }
     }
 
-    public function index() {
+    public function index()
+    {
         if (isset($_POST['enviar'])) {
             $this->novoUsuario();
         }
         $data['usuarios'] = $this->getUsuarios();
-        $this->loadTemplateWPC('usuarios', $data);
+        $this->loadTemplateWCP('usuarios', $data);
     }
 
-    public function novo() {
+    public function novo()
+    {
         if (isset($_POST['submit_new_user'])) {
             $this->novoUsuario();
         }
-        $this->loadTemplateWPC('novo_usuario', array());
+        $this->loadTemplateWCP('novo_usuario', array());
     }
 
-    private function novoUsuario() {
+    private function novoUsuario()
+    {
         global $settings;
 
         $nome = filter_input(INPUT_POST, 'nome_user', FILTER_SANITIZE_STRING);
         $email = filter_input(INPUT_POST, 'email_user', FILTER_SANITIZE_EMAIL);
+        $nivel = filter_input(INPUT_POST, 'nivel', FILTER_SANITIZE_NUMBER_INT);
         $senha = md5(filter_input(INPUT_POST, 'email_user', FILTER_SANITIZE_STRING));
 
         if (!empty($nome) && !empty($email) && !empty($senha)) {
@@ -56,7 +63,8 @@ class usuarioController extends Controller {
                 $data = array(
                     'user_name' => $nome,
                     'user_email' => $email,
-                    'user_passw' => $senha
+                    'user_passw' => $senha,
+                    'user_level' => $nivel
                 );
 
                 if ($this->usuarioModel->insertUser($data)) {
@@ -66,17 +74,18 @@ class usuarioController extends Controller {
                 } else {
                     $data['msg']['type'] = 'erro';
                     $data['msg'][] = 'Falha ao tentar cadastrar o novo usuário';
-                    $this->loadTemplateWPC('usuarios', $data);
+                    $this->loadTemplateWCP('usuarios', $data);
                 }
             } else {
                 $data['msg']['type'] = 'erro';
                 $data['msg'][] = 'Já existe um usuário com este email.';
-                $this->loadTemplateWPC('novo_usuario', $data);
+                $this->loadTemplateWCP('novo_usuario', $data);
             }
         }
     }
 
-    public function excluir($id) {
+    public function excluir($id)
+    {
         global $settings;
         if (!empty($id) && is_numeric($id)) {
             $result = $this->usuarioModel->deleteUser(addslashes($id));
@@ -87,12 +96,22 @@ class usuarioController extends Controller {
             } else {
                 $data['msg']['type'] = 'erro';
                 $data['msg'][] = 'Falha ao tentar cadastrar o novo usuário';
-                $this->loadTemplateWPC('usuarios', $data);
+                $this->loadTemplateWCP('usuarios', $data);
             }
         }
     }
 
-    public function editar($id) {
+    private function isExistEmail($email)
+    {
+        $result = $this->usuarioModel->selectUserEmail($email);
+        if ($result) {
+            return TRUE;
+        }
+        return FALSE;
+    }
+
+    public function editar($id)
+    {
         global $settings;
         $data = array();
 
@@ -109,6 +128,10 @@ class usuarioController extends Controller {
                     'user_email' => $email
                 );
 
+                if (!empty($_POST['senha'])) {
+                    $data['user_passw'] = md5($_POST['senha']);
+                }
+
                 $where = array(
                     'user_id' => $id
                 );
@@ -119,35 +142,23 @@ class usuarioController extends Controller {
                 if ($result) {
                     header('Location: ' . $settings['url_wcp'] . '/usuario');
                     die();
+                }
+            } else {
+                if (!empty($id) && is_numeric($id)) {
+
+                    $id = addslashes($id);
+                    $result = $this->usuarioModel->selectUser($id);
+
+                    if ($result) {
+                        $data['usuario'] = $result;
+                        $this->loadTemplateWCP('editar_usuario', $data);
+                    } else {
+                        header('Location: ' . $settings['url_wcp'] . '/usuario');
+                    }
                 } else {
-                    $data['usuario'] = $this->usuarioModel->selectUser($id);
-                    $data['msg']['type'] = 'danger';
-                    $data['msg']['message'] = 'Falha ao tentar atualizar os dados do usuário.';
-                    $this->loadTemplateWPC('editar_usuario', $data);
+                    header('Location: ' . $settings['url_wcp'] . '/usuario');
                 }
             }
-        } else if (!empty($id) && is_numeric($id)) {
-
-            $id = addslashes($id);
-            $result = $this->usuarioModel->selectUser($id);
-
-            if ($result) {
-                $data['usuario'] = $result;
-                $this->loadTemplateWPC('editar_usuario', $data);
-            } else {
-                header('Location: ' . $settings['url_wcp'] . '/usuario');
-            }
-        } else {
-            header('Location: ' . $settings['url_wcp'] . '/usuario');
         }
     }
-
-    private function isExistEmail($email) {
-        $result = $this->usuarioModel->selectUserEmail(addslashes($email));
-        if ($result) {
-            return true;
-        }
-        return FALSE;
-    }
-
 }

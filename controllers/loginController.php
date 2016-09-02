@@ -18,31 +18,42 @@ class loginController extends Controller
 
     public function index()
     {
-
-        if(isset($_POST['logar'])) {
-           $this->login();
+        if (isset($_POST['logar'])) {
+            $this->login();
         }
-
         $this->loadViewInWCP('login', array());
     }
 
-    private function login() {
+    public function logout()
+    {
         global $settings;
-        if(!empty($_POST['email']) && !empty($_POST['senha'])) {
-            $senha = md5($_POST['senha']);
-            $user = $this->modelUser->getUserByEmailAndPassw($_POST['email'], $senha);
+        if (isset($_SESSION['user'])) {
+            unset($_SESSION['user']);
+            header('Location: ' . $settings['url_wcp']);
+            die();
+        }
+    }
 
-            if($user) {
+    private function login()
+    {
+        global $settings;
+        if (!empty($_POST['email']) && !empty($_POST['senha'])) {
+            $senha = md5($_POST['senha']);
+            $user = $this->modelUser->loginUser($_POST['email'], $senha);
+
+            if ($user) {
+                unset($_SESSION['erro_login']);
                 $_SESSION['user']['name'] = $user[0]['user_name'];
                 $_SESSION['user']['email'] = $user[0]['user_email'];
+                $_SESSION['user']['nivel'] = $user[0]['user_level'];
                 header('Location: ' . $settings['url_wcp']);
                 die();
             } else {
-                $data['erro_login'] = "Email ou senha inválidos";
-                $this->loadViewInWCP('login', $data);
+                $_SESSION['erro_login'] = 'Email e/ou senha inválidos';
+                header('Location: ' . $settings['url_wcp'] . '/login');
             }
-
-            var_dump($user);exit;
         }
-     }
+    }
+
+
 }

@@ -29,7 +29,7 @@ class configuracaoController extends Controller
             $this->addConfiguration();
         } else {
             $data['setting'] = $this->settingsModel->selectAllSettings();
-            $this->loadTemplateWPC('config', $data);
+            $this->loadTemplateWCP('config', $data);
         }
     }
 
@@ -51,13 +51,13 @@ class configuracaoController extends Controller
             header('Location:  ' . $settings['url_wcp']);
             die();
         } else {
-            $this->loadTemplateWPC('config', array());
+            $this->loadTemplateWCP('config', array());
         }
     }
 
     public function configure()
     {
-        $this->loadTemplateWPC('config', array());
+        $this->loadTemplateWCP('config', array());
     }
 
 }

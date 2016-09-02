@@ -21,6 +21,11 @@
             <input type="email" required="true" name="email_user" class="fw-form-group" placeholder="exemplo@email.com"/>
             <label for="senha_user" class="fw-form-group">Senha:</label>
             <input type="password" required="true" name="senha_user" class="fw-form-group" placeholder="******"/>
+            <label for="nivel" class="fw-form-group">Nível:</label>
+            <select name="nivel" class="fw-form-group fw-form-group-select">
+                <option value="0" >Administrador</option>
+                <option value="1" selected>Usuário</option>
+            </select>
             <input type="submit" value="Enviar" name="submit_new_user" id="enviar" class="fw-btn fw-btn-success"/>
             <a href="<?php echo $settings['url_wcp'];?>/usuario" class="fw-link fw-link-danger">Cancelar</a>
         </form>

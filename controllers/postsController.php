@@ -29,13 +29,13 @@ class postsController extends Controller
         }
 
         $data['posts'] = $this->postModel->selectAllPosts();
-        $this->loadTemplateWPC('posts', $data);
+        $this->loadTemplateWCP('posts', $data);
     }
 
     public function novo()
     {
         $data['categorias'] = $this->getCategorias();
-        $this->loadTemplateWPC('novo_post', $data);
+        $this->loadTemplateWCP('novo_post', $data);
     }
 
     public function excluir($id)
@@ -53,7 +53,7 @@ class postsController extends Controller
                 $data['posts'] = $this->postModel->selectAllPosts();
                 $data['msg']['type'] = 'danger';
                 $data['msg']['message'] = 'Falha ao tentar excluir o post selecionado.';
-                $this->loadTemplateWPC('posts', $data);
+                $this->loadTemplateWCP('posts', $data);
             }
         }
     }
@@ -70,7 +70,7 @@ class postsController extends Controller
             if ($result) {
                 $data['post'] = $result;
                 $data['categorias'] = $this->getCategorias();
-                $this->loadTemplateWPC('editar_post', $data);
+                $this->loadTemplateWCP('editar_post', $data);
             } else {
                 header('Location: ' . $settings['url_wcp'] . '/posts');
                 die();

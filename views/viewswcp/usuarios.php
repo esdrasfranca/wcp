@@ -32,8 +32,8 @@ global $settings;
                             <td><?php echo $value['user_name']; ?></td>
                             <td><?php echo $value['user_email']; ?></td>
                             <td>
-                                <a href="<?php echo $settings['url_wcp']; ?>/usuario/excluir/<?php echo $value['user_id']; ?>">Excluir</a> |
-                                <a href="<?php echo $settings['url_wcp']; ?>/usuario/editar/<?php echo $value['user_id']; ?>">Editar</a>
+                                <a href="<?php echo $settings['url_wcp']; ?>/usuario/editar/<?php echo $value['user_id']; ?>">Editar</a> |
+                                <a href="<?php echo $settings['url_wcp']; ?>/usuario/excluir/<?php echo $value['user_id']; ?>">Excluir</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

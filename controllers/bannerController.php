@@ -30,7 +30,7 @@ class bannerController extends Controller
             if ($result) {
                 $data['banners'] = $result;
             }
-            $this->loadTemplateWPC('banner', $data);
+            $this->loadTemplateWCP('banner', $data);
         }
 
 
@@ -38,7 +38,7 @@ class bannerController extends Controller
 
     public function novo()
     {
-        $this->loadTemplateWPC('novo_banner', array());
+        $this->loadTemplateWCP('novo_banner', array());
     }
 
     public function editar($id)
@@ -52,7 +52,7 @@ class bannerController extends Controller
                 $data['banner'] = $banner;
             }
 
-            $this->loadTemplateWPC('editar_banner', $data);
+            $this->loadTemplateWCP('editar_banner', $data);
 
         } else {
             header('Location: ' . $settings['url_wcp'] . '/banner');

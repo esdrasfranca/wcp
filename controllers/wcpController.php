@@ -12,7 +12,7 @@ class wcpController extends Controller
     {
         global $settings;
         if ($this->isLoagado()) {
-            $this->loadTemplateWPC("home", array());
+            $this->loadTemplateWCP("home", array());
 
         } else {
             header('Location: ' . $settings['url_wcp'] . '/login');
@@ -22,7 +22,7 @@ class wcpController extends Controller
 
     public function erro404()
     {
-        $this->loadTemplateWPC('404', array());
+        $this->loadTemplateWCP('404', array());
     }
 
     public function login()
