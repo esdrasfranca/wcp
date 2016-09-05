@@ -143,21 +143,21 @@ class usuarioController extends Controller
                     header('Location: ' . $settings['url_wcp'] . '/usuario');
                     die();
                 }
-            } else {
-                if (!empty($id) && is_numeric($id)) {
+            }
+        } else {
+            if (!empty($id) && is_numeric($id)) {
 
-                    $id = addslashes($id);
-                    $result = $this->usuarioModel->selectUser($id);
+                $id = addslashes($id);
+                $result = $this->usuarioModel->selectUser($id);
 
-                    if ($result) {
-                        $data['usuario'] = $result;
-                        $this->loadTemplateWCP('editar_usuario', $data);
-                    } else {
-                        header('Location: ' . $settings['url_wcp'] . '/usuario');
-                    }
+                if ($result) {
+                    $data['usuario'] = $result;
+                    $this->loadTemplateWCP('editar_usuario', $data);
                 } else {
                     header('Location: ' . $settings['url_wcp'] . '/usuario');
                 }
+            } else {
+                header('Location: ' . $settings['url_wcp'] . '/usuario');
             }
         }
     }
