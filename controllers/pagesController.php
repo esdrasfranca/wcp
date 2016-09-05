@@ -23,4 +23,9 @@ class pagesController extends Controller
     public function _index($param) {
         $this->loadTemplateSITE('home', array());
     }
+
+    public function erro404() {
+        $this->loadTemplateSITE('404', array());
+
+    }
 }

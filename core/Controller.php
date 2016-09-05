@@ -2,8 +2,8 @@
 
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * To change this templates file, choose Tools | Templates
+ * and open the templates in the editor.
  */
 
 /**
@@ -31,15 +31,11 @@ abstract class Controller {
 
     public function loadViewInWCP($viewName, $viewData = array()) {
         extract($viewData);
-        include 'views/viewswcp/' . $viewName . '.php';
+        include 'views/wcp_view/' . $viewName . '.php';
     }
 
-//    public function loadTemplateWCPLogin($viewName, $viewData = array()) {
-//        include 'views/template/login-tpl.php';
-//    }
-
     public function loadTemplateWCP($viewName, $viewData = array()) {
-        include 'views/template/template.php';
+        include 'views/templates/wcp/template.php';
     }
 
     public function loadTemplateSITE($viewName, $viewData = array()) {

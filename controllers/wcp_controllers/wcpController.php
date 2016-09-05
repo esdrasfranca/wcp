@@ -11,18 +11,19 @@ class wcpController extends Controller
     public function index()
     {
         global $settings;
+        $this->loadTemplateWCP("home", array());
+        /*
         if ($this->isLoagado()) {
-            $this->loadTemplateWCP("home", array());
 
         } else {
             header('Location: ' . $settings['url_wcp'] . '/login');
             die();
-        }
+        }*/
     }
 
     public function erro404()
     {
-        $this->loadTemplateWCP('404', array());
+        $this->loadTemplateWCP('erro404', array());
     }
 
     public function login()

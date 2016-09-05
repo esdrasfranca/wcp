@@ -30,7 +30,7 @@ global $settings;
                 <?php foreach ($banners as $banner): ?>
                     <tr>
                         <td><?php echo $banner['ban_position']; ?></td>
-                        <td><img src="<?php echo $settings['url_base']; ?>/assets/img/<?php echo $banner['ban_image']; ?>"
+                        <td><img src="<?php echo $settings['url_base']; ?>/upload/<?php echo $banner['ban_image']; ?>"
                                  alt="" width="60"></td>
                         <td>
                             <a href="<?php echo $settings['url_wcp']; ?>/banner/editar/<?php echo $banner['ban_id']?>">Editar</a> |
