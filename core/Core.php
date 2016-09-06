@@ -71,7 +71,6 @@ class Core
                     $controller = new wcpController();
                     $controller->erro404();
                 }
-
             } else if (!empty($settings['project_name']) && strpos($_SERVER['REQUEST_URI'], $settings['project_name'])) {
                 $url = explode($settings['project_name'] . '/', $_SERVER['REQUEST_URI']);
                 array_shift($url);
@@ -96,7 +95,9 @@ class Core
                     call_user_func_array(array($controller, $currentAction), $param);
                 } else {
                     $controller = new pagesController();
-                    $controller->erro404();
+					$param = array();
+                    $currentAction = "erro404";
+                    call_user_func_array(array($controller, $currentAction), $param);
                 }
 
             } else {
@@ -114,13 +115,16 @@ class Core
                 if (count($url) > 0) {
                     $param = $url;
                 }
+				
+				$controller = new $currentController(); //Instancia o controller;
 
-                
+                if (method_exists($controller, $currentAction)) {
+                    call_user_func_array(array($controller, $currentAction), $param);
+                } else {
+                    $controller = new pagesController();
+                    $controller->erro404();
+                }
             }
-
-
-//            $controller = new $currentController(); //Instancia o controller
-//            call_user_func_array(array($controller, $currentAction), $param);
         }
     }
 }

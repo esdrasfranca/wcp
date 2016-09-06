@@ -11,14 +11,14 @@
  *
  * @author DIGIFUND
  */
-class Settings extends Model
+class Configuration extends Model
 {
 
-    const TABLE_NAME = 'settings';
+    const TABLE_NAME = '';
 
     public function __construct()
     {
-        parent::__construct(Settings::TABLE_NAME);
+        parent::__construct(Configuration::TABLE_NAME);
     }
 
     public function selectAllSettings()

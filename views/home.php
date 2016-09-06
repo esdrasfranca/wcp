@@ -1,3 +1,1 @@
-<?php
-var_dump($this->settings);
-?>
+<h1>WCP - Work Control Panel</h1>

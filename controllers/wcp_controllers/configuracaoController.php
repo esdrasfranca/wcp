@@ -13,13 +13,12 @@
  */
 class configuracaoController extends Controller
 {
-
     private $settingsModel;
 
     public function __construct()
     {
         parent::__construct();
-        $this->settingsModel = new Settings();
+        $this->settingsModel = new Configuration();
     }
 
     public function index()
@@ -32,32 +31,4 @@ class configuracaoController extends Controller
             $this->loadTemplateWCP('config', $data);
         }
     }
-
-    private function addConfiguration()
-    {
-        global $settings;
-        $url = filter_input(INPUT_POST, 'url_site', FILTER_SANITIZE_STRING);
-        $array_url = str_split($url);
-
-        if ($array_url[count($array_url) - 1] == '/') {
-            array_pop($array_url);
-        }
-        $url = implode('', $array_url);
-        $result = $this->settingsModel->insertSettings(array(
-            'url_site' => $url
-        ));
-
-        if ($result > 0) {
-            header('Location:  ' . $settings['url_wcp']);
-            die();
-        } else {
-            $this->loadTemplateWCP('config', array());
-        }
-    }
-
-    public function configure()
-    {
-        $this->loadTemplateWCP('config', array());
-    }
-
 }

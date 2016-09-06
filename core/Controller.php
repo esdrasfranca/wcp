@@ -34,12 +34,17 @@ abstract class Controller {
         include 'views/wcp_view/' . $viewName . '.php';
     }
 
+    public function loadViewInTemplateSITE($viewName, $viewData = array()) {
+        extract($viewData);
+        include 'views/' . $viewName . '.php';
+    }
+
     public function loadTemplateWCP($viewName, $viewData = array()) {
         include 'views/templates/wcp/template.php';
     }
 
     public function loadTemplateSITE($viewName, $viewData = array()) {
-        include 'views/template_site.php';
+        include 'views/templates/default.php';
     }
 
 

@@ -8,9 +8,6 @@
  */
 class pagesController extends Controller
 {
-
-
-
     public function __construct()
     {
         parent::__construct();
@@ -18,14 +15,11 @@ class pagesController extends Controller
 
     public function index()
     {
-    }
-
-    public function _index($param) {
         $this->loadTemplateSITE('home', array());
     }
 
-    public function erro404() {
+    public function erro404()
+    {
         $this->loadTemplateSITE('404', array());
-
     }
 }
