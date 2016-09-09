@@ -43,8 +43,13 @@ abstract class Controller {
         include 'views/templates/wcp/template.php';
     }
 
-    public function loadTemplateSITE($viewName, $viewData = array()) {
-        include 'views/templates/default.php';
+    public function loadTemplateSITE($viewName, $viewData = array(), $tpl_name = '') {
+		global $settings;
+		if(empty($tpl_name)) {
+			include 'views/templates/'.$settings['tpl_site'].'.php';
+		} else {
+			include 'views/templates/'.$tpl_name.'.php';
+		}
     }
 
 

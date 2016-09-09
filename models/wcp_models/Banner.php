@@ -23,6 +23,8 @@ class Banner extends Model
      */
     public function insertBanner($data = array())
     {
+
+
         if (count($data) > 0) {
             return $this->insert($data);
         } else {
@@ -66,7 +68,8 @@ class Banner extends Model
         }
     }
 
-    public function deleteBanner($id) {
-        return $this->delete(array('ban_id'=>$id));
+    public function deleteBanner($id)
+    {
+        return $this->delete(array('ban_id' => $id));
     }
 }

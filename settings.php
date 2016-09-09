@@ -22,3 +22,4 @@ $settings['url_base'] = "http://". $_SERVER['HTTP_HOST'] . '/wcp';
 $settings['url_wcp'] = $settings['url_base'];
 $settings['root_path'] = $_SERVER['DOCUMENT_ROOT'] . 'wcp';
 $settings['upload_path'] = $settings['root_path'] . '/upload';
+$settings['tpl_site'] = "default";
